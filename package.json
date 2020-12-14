@@ -9,6 +9,7 @@
         "postbuild": "next-on-netlify"
     },
     "dependencies": {
+        "@material-ui/core": "^4.11.2",
         "next": "10.0.3",
         "next-on-netlify": "^2.6.3",
         "react": "17.0.1",
