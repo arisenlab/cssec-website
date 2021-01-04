@@ -49,7 +49,7 @@ const Header = () => {
     };
 
     return (
-        <div className={classes.root}>
+        <>
             <AppBar position="static" style={{ backgroundColor: "#622A55" }}>
                 <Toolbar>
                     <IconButton
@@ -82,7 +82,7 @@ const Header = () => {
                     </div>
                 </Toolbar>
             </AppBar>
-        </div>
+        </>
     );
 };
 

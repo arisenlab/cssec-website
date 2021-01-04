@@ -89,7 +89,10 @@ const Navbar = () => {
                                     aria-haspopup="true"
                                     onClick={handleToggle}
                                 >
-                                    <Typography style={{ color: "#fff" }}>
+                                    <Typography
+                                        style={{ color: "#fff" }}
+                                        component="div"
+                                    >
                                         <div
                                             style={{
                                                 display: "flex",

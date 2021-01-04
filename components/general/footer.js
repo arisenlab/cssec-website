@@ -26,6 +26,11 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         alignContent: "center",
     },
+    footer: {
+        backgroundColor: "#3A1534",
+        color: "#ffffff",
+        paddingLeft: "10px",
+    },
 }));
 
 const Footer = () => {
@@ -35,15 +40,11 @@ const Footer = () => {
             <Space />
             <Grid
                 container
-                spacing={2}
+                spacing={1}
                 alignItems="center"
-                style={{
-                    backgroundColor: "#3A1534",
-                    color: "#ffffff",
-                    paddingLeft: "10px",
-                }}
+                className={classes.footer}
             >
-                <Grid item xs={4}>
+                <Grid item md={4}>
                     <dl>
                         <dt>
                             <Typography variant="body1">
@@ -76,7 +77,7 @@ const Footer = () => {
                     </dl>
                 </Grid>
 
-                <Grid item xs={3}>
+                <Grid item md={3}>
                     <dl>
                         <dt>
                             <Typography variant="body1">
@@ -135,7 +136,7 @@ const Footer = () => {
                     </dl>
                 </Grid>
 
-                <Grid item xs={5} align="center">
+                <Grid item md={4} align="center">
                     <div className={classes.partnersIcons}>
                         <img
                             src="./logos/addu_white_logo.png"
