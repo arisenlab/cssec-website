@@ -139,7 +139,7 @@ const Footer = () => {
                 <Grid item md={4} align="center">
                     <div className={classes.partnersIcons}>
                         <img
-                            src="./logos/addu_white_logo.png"
+                            src="/logos/addu_white_logo.png"
                             width="60px"
                             height="60px"
                         />

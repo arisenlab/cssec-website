@@ -14,9 +14,9 @@ import routes from "./routes";
 const useStyles = makeStyles(theme => ({
     list: {
         width: 250,
-    },
-    fullList: {
-        width: "auto",
+        height: "100%",
+        backgroundColor: "#622A55",
+        color: "#fff",
     },
     nested: {
         paddingLeft: theme.spacing(2),
@@ -42,7 +42,7 @@ const NavBurger = ({ onChosen }) => {
                         id="list-subheader"
                         style={{ marginTop: 15 }}
                     >
-                        <Typography variant="h5" color="secondary">
+                        <Typography variant="h4" style={{ color: "#fff" }}>
                             CSSEC
                         </Typography>
                     </ListSubheader>
@@ -63,7 +63,11 @@ const NavBurger = ({ onChosen }) => {
                                 </ListItem>
                             ) : (
                                 <>
-                                    <ListItem button onClick={handleClick}>
+                                    <ListItem
+                                        button
+                                        onClick={handleClick}
+                                        key={link.page}
+                                    >
                                         <ListItemText
                                             primary={
                                                 <Typography variant="h6">
@@ -86,11 +90,14 @@ const NavBurger = ({ onChosen }) => {
                                                         className={
                                                             classes.nested
                                                         }
+                                                        key={linkSub.page}
                                                     >
                                                         <ListItemText
                                                             primary={
-                                                                <Typography variant="h6">
-                                                                    {link.page}
+                                                                <Typography variant="body1">
+                                                                    {
+                                                                        linkSub.page
+                                                                    }
                                                                 </Typography>
                                                             }
                                                             className={

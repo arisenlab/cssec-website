@@ -18,10 +18,14 @@ const useStyles = makeStyles(theme => ({
     linkStyles: {
         margin: theme.spacing(1),
     },
+    collapseDesign: {
+        backgroundColor: "#622A55",
+        color: "#fff",
+    },
 }));
 
 const Navbar = () => {
-    const styles = useStyles();
+    const classes = useStyles();
 
     const router = useRouter();
 
@@ -72,7 +76,7 @@ const Navbar = () => {
                                 <Button
                                     variant="text"
                                     href="#"
-                                    className={styles.linkStyles}
+                                    className={classes.linkStyles}
                                 >
                                     <Typography style={{ color: "#fff" }}>
                                         {link.page}
@@ -120,6 +124,7 @@ const Navbar = () => {
                                                         ? "center top"
                                                         : "center bottom",
                                             }}
+                                            className={classes.collapseDesign}
                                         >
                                             <Paper>
                                                 <ClickAwayListener

@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up("md")]: {
             display: "none",
         },
+        color: "#fff",
     },
     navLinks: {
         [theme.breakpoints.down("md")]: {
