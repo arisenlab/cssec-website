@@ -9,6 +9,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Space from "./space";
 
+import { media_url } from "../../utils/constants";
+
 const useStyles = makeStyles(theme => ({
     scContainer: {
         marginTop: theme.spacing(1),
@@ -139,7 +141,7 @@ const Footer = () => {
                 <Grid item md={4} align="center">
                     <div className={classes.partnersIcons}>
                         <img
-                            src="/logos/addu_white_logo.png"
+                            src={`${media_url}/2021/01/logo_addu_white.png`}
                             width="60px"
                             height="60px"
                         />

@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     itWeekDescription: {
         padding: "10px",
         textIndent: "50px",
+        marginTop: 10,
     },
 }));
 
@@ -31,7 +32,7 @@ const ITWeek = () => {
         <div className={classes.root}>
             <Space />
 
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
                 <Grid item md={8}>
                     <Paper>
                         <Typography>IT Week Banner</Typography>
@@ -65,7 +66,7 @@ const ITWeek = () => {
 
             <Space />
 
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
                 <Grid item xs={12} md={4}>
                     <Paper>
                         <Typography>Ad Space</Typography>
@@ -73,11 +74,9 @@ const ITWeek = () => {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <Paper style={{ padding: "10px" }}>
-                        <img
-                            src="/it-week/Information Technology Week.svg"
-                            alt="Information Technology Week"
-                            style={{ width: "100%" }}
-                        />
+                        <Typography variant="h4" style={{ color: "#5D2252" }}>
+                            Information Technology Week 2021
+                        </Typography>
                     </Paper>
                     <Grid container spacing={2} style={{ marginTop: 10 }}>
                         {ITWeekActs.map(image => {

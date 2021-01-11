@@ -1,34 +1,33 @@
 import React from "react";
-import ComputerIcon from "@material-ui/icons/Computer";
-import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const Redirect = ({ imgSrc, title, labelLogoSrc }) => {
     return (
-        <div
-            style={{
-                background: `url(${imgSrc})`,
-                backgroundSize: "auto",
-                borderRadius: "5px",
-                height: "150px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-            }}
-        >
-            <div style={{ width: "100%" }}>
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                    }}
-                >
-                    <ComputerIcon style={{ color: "#949494", fontSize: 80 }} />
-                </div>
-                <div style={{ marginTop: 15 }}>
-                    <img src={labelLogoSrc} alt={title} width="100%" />
-                </div>
+        <>
+            <div
+                style={{
+                    background: `url(${imgSrc})`,
+                    height: 150,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Typography>SAMPLE</Typography>
             </div>
-        </div>
+            <div
+                style={{
+                    marginTop: 10,
+                    display: "flex",
+                    justifyContent: "center",
+                }}
+            >
+                <Button variant="outlined" color="primary" disableElevation>
+                    <Typography>{title}</Typography>
+                </Button>
+            </div>
+        </>
     );
 };
 

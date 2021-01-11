@@ -5,6 +5,8 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../components/theme";
 
+import "react-image-gallery/styles/css/image-gallery.css";
+
 import Header from "../components/general/header";
 import Footer from "../components/general/footer";
 

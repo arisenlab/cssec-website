@@ -1,0 +1,64 @@
+import React from "react";
+
+import Banner from "../../../components/accss/banner";
+import About from "../../../components/accss/about";
+import NewsAndUpdates from "../../../components/accss/news_events";
+import Activities from "../../../components/accss/activities";
+
+import Space from "../../../components/general/space";
+
+import WP from "../../../utils/wordpress";
+
+import sort from "fast-sort";
+
+const Accss = ({ accss_posts, users, accss_activities, media }) => {
+    return (
+        <>
+            <Banner />
+
+            <Space />
+
+            <About />
+
+            <Space />
+
+            <NewsAndUpdates posts={accss_posts} users={users} media={media} />
+
+            <Space />
+
+            <Activities activities={accss_activities} />
+        </>
+    );
+};
+
+export async function getStaticProps() {
+    try {
+        let [accss_posts, users, accss_activities, media] = await Promise.all([
+            WP.posts().categories(3).perPage(3).order("desc").orderby("date"),
+            WP.users(),
+            WP.accss_activities(),
+            WP.media(),
+        ]);
+
+        sort(accss_posts).desc(post => post.date);
+        sort(accss_activities).asc(activity => activity.acf.name);
+
+        return {
+            props: { accss_posts, users, accss_activities, media },
+            revalidate: 10,
+        };
+    } catch (err) {
+        console.log(err);
+        return {
+            props: {
+                accss_posts: [],
+                users: [],
+                accss_activities: [],
+                media: [],
+            },
+            revalidate: 10,
+        };
+    }
+}
+
+export default Accss;

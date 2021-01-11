@@ -5,9 +5,11 @@ import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { media_url } from "../../utils/constants";
+
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "90%",
+        width: "85%",
         margin: "auto",
     },
 }));
@@ -18,7 +20,7 @@ const About = () => {
     return (
         <Grid
             container
-            spacing={2}
+            spacing={1}
             alignItems="center"
             className={classes.root}
         >
@@ -38,8 +40,11 @@ const About = () => {
                 </Typography>
             </Grid>
             <Hidden smDown>
-                <Grid item md={5}>
-                    <img src="/logos/arisen_banner_logo.png" width="100%" />
+                <Grid item md={5} align="center">
+                    <img
+                        src={`${media_url}/2021/01/logo_accss.png`}
+                        width="60%"
+                    />
                 </Grid>
             </Hidden>
         </Grid>
