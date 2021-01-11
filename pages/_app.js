@@ -1,14 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
+import Router, { useRouter } from "next/router";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../components/theme";
+
+import NProgress from "nprogress";
 
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import Header from "../components/general/header";
 import Footer from "../components/general/footer";
+
+NProgress.configure({
+    showSpinner: false,
+});
+
+Router.onRouteChangeStart = () => {
+    NProgress.start();
+};
+
+Router.onRouteChangeComplete = url => {
+    NProgress.done();
+};
+
+Router.onRouteChangeError = () => {
+    NProgress.done();
+};
 
 export default function CSSECFrontEnd(props) {
     const { Component, pageProps } = props;

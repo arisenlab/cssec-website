@@ -8,7 +8,12 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
-                <Head></Head>
+                <Head>
+                    <link
+                        rel="stylesheet"
+                        href="https://unpkg.com/nprogress@0.2.0/nprogress.css"
+                    />
+                </Head>
                 <body>
                     <Main />
                     <NextScript />
