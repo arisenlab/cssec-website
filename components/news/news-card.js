@@ -51,19 +51,22 @@ const NewsCard = ({ post, author, cssec = true }) => {
 
     return (
         <Card className={classes.root} variant="outlined">
-            {cssec ? (
+            {post.jetpack_featured_media_url !== "" ? (
                 <CardMedia
                     className={classes.media}
-                    image={
-                        post.jetpack_featured_media_url !== ""
-                            ? post.jetpack_featured_media_url
-                            : "/logos/temp.jpg"
-                    }
+                    image={post.jetpack_featured_media_url}
                     title={renderedTitle}
                 />
-            ) : (
-                <></>
-            )}
+            ) : null}
+            <CardMedia
+                className={classes.media}
+                image={
+                    post.jetpack_featured_media_url !== ""
+                        ? post.jetpack_featured_media_url
+                        : "/logos/temp.jpg"
+                }
+                title={renderedTitle}
+            />
             <CardContent>
                 <Typography
                     variant="h4"
