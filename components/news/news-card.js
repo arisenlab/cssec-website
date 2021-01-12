@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     },
 });
 
-const NewsCard = ({ post, author, cssec = true }) => {
+const NewsCard = ({ post, author }) => {
     const classes = useStyles();
     const router = useRouter();
 
