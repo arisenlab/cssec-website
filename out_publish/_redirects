@@ -1,7 +1,9 @@
 # Next-on-Netlify Redirects
-/_next/data/PF0py9I62UR4qpOOTEelJ/learn-more/accss.json  /.netlify/functions/next_learnmore_accss  200
-/_next/data/PF0py9I62UR4qpOOTEelJ/learn-more/committees.json  /.netlify/functions/next_learnmore_committees  200
-/_next/data/PF0py9I62UR4qpOOTEelJ/news.json  /.netlify/functions/next_news  200
+/_next/data/vYF66eraQRDwmJYGTNibM/learn-more/accss.json  /.netlify/functions/next_learnmore_accss  200
+/_next/data/vYF66eraQRDwmJYGTNibM/learn-more/committees.json  /.netlify/functions/next_learnmore_committees  200
+/_next/data/vYF66eraQRDwmJYGTNibM/news.json  /.netlify/functions/next_news  200
+/_next/data/vYF66eraQRDwmJYGTNibM/news/:slug.json  /.netlify/functions/next_news_slug  200
 /learn-more/accss  /.netlify/functions/next_learnmore_accss  200
 /learn-more/committees  /.netlify/functions/next_learnmore_committees  200
 /news  /.netlify/functions/next_news  200
+/news/:slug  /.netlify/functions/next_news_slug  200

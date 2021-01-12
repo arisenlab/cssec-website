@@ -1,4 +1,7 @@
 import React from "react";
+
+import { useRouter } from "next/router";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -33,6 +36,7 @@ const useStyles = makeStyles({
 
 const NewsCard = ({ post, author, cssec = true }) => {
     const classes = useStyles();
+    const router = useRouter();
 
     const [renderedExcerpt, setRenderedExcerpt] = React.useState("");
     const [renderedTitle, setRenderedTitle] = React.useState("");
@@ -85,7 +89,12 @@ const NewsCard = ({ post, author, cssec = true }) => {
             <CardActions
                 style={{ display: "flex", flexDirection: "row-reverse" }}
             >
-                <Button variant="outlined" color="primary" disableElevation>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    disableElevation
+                    onClick={() => router.push(`/news/${post.slug}`)}
+                >
                     Read More
                 </Button>
             </CardActions>
