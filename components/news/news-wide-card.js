@@ -1,10 +1,14 @@
-import { Typography } from "@material-ui/core";
 import React from "react";
+
+import { useRouter } from "next/router";
+
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 const NewsWideCard = ({ post, author }) => {
+    const router = useRouter();
     const [renderedExcerpt, setRenderedExcerpt] = React.useState("");
     const [renderedTitle, setRenderedTitle] = React.useState("");
 
@@ -59,6 +63,7 @@ const NewsWideCard = ({ post, author }) => {
                             variant="outlined"
                             color="primary"
                             disableElevation
+                            onClick={() => router.push(`/news/${post.slug}`)}
                         >
                             Read More
                         </Button>

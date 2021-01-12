@@ -1,4 +1,5 @@
 import React from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -9,8 +10,6 @@ import Space from "../../components/general/space";
 import SectionHeader from "../../components/news/section-header";
 
 import WP from "../../utils/wordpress";
-
-import sort from "fast-sort";
 
 const useStyles = makeStyles({
     upperRoot: {
@@ -41,7 +40,7 @@ const News = ({ upperNews, lowerNews, users }) => {
             <Grid container spacing={2} className={classes.upperRoot}>
                 {upperNews.map(news => {
                     return (
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={4} key={news.id}>
                             <NewsCard
                                 post={news}
                                 author={getAuthor(news.author)}
@@ -71,7 +70,7 @@ const News = ({ upperNews, lowerNews, users }) => {
             <Grid container spacing={1} className={classes.upperRoot}>
                 {lowerNews.map(news => {
                     return (
-                        <Grid item xs={12}>
+                        <Grid item xs={12} key={news.id}>
                             <NewsWideCard
                                 post={news}
                                 author={getAuthor(news.author)}

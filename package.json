@@ -17,6 +17,7 @@
         "nprogress": "^0.2.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
+        "react-gutenberg": "^0.5.2",
         "react-image-gallery": "^1.0.8",
         "wpapi": "^1.2.1"
     }
