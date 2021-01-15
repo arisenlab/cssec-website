@@ -14,7 +14,6 @@ import Divider from "@material-ui/core/Divider";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Space from "../../components/general/space";
-import EsportsLiveVideo from "../../components/it-week/esports-live-video";
 import esports from "../../data/esports";
 import Youtube from "../../components/it-week/Youtube";
 

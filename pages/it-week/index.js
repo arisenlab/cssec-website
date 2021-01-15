@@ -14,7 +14,7 @@ import ITWeekActs from "../../data/it-week-acts";
 import { media_url } from "../../utils/constants";
 import google_calendar from "../../utils/google";
 
-import { getDay, format, isSameDay } from "date-fns";
+import { isSameDay } from "date-fns";
 
 const useStyles = makeStyles(theme => ({
     root: {
