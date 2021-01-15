@@ -10,6 +10,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import { format } from "date-fns";
+
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
@@ -62,15 +64,6 @@ const NewsCard = ({ post, author }) => {
                     title={renderedTitle}
                 />
             ) : null}
-            <CardMedia
-                className={classes.media}
-                image={
-                    post.jetpack_featured_media_url !== ""
-                        ? post.jetpack_featured_media_url
-                        : "/logos/temp.jpg"
-                }
-                title={renderedTitle}
-            />
             <CardContent>
                 <Typography
                     variant="h4"
@@ -78,7 +71,10 @@ const NewsCard = ({ post, author }) => {
                     dangerouslySetInnerHTML={{ __html: renderedTitle }}
                 />
                 <Typography className={classes.pos} color="textSecondary">
-                    {`${author}/${post.date}`}
+                    {`${author} on ${format(
+                        new Date(post.date),
+                        "MMM dd yyyy p"
+                    )}`}
                 </Typography>
                 <Typography
                     variant="body1"

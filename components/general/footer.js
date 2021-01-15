@@ -27,6 +27,8 @@ const useStyles = makeStyles(theme => ({
     partnersIcons: {
         display: "flex",
         alignContent: "center",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
     footer: {
         backgroundColor: "#3A1534",
@@ -141,9 +143,24 @@ const Footer = () => {
                 <Grid item md={4} align="center">
                     <div className={classes.partnersIcons}>
                         <img
+                            src={`${media_url}/2021/01/logo-cssec-white.png`}
+                            width="60px"
+                            height="60px"
+                        />
+                        <img
+                            src={`${media_url}/2021/01/logo-cs.png`}
+                            width="60px"
+                            height="60px"
+                        />
+                        <img
                             src={`${media_url}/2021/01/logo_addu_white.png`}
                             width="60px"
                             height="60px"
+                        />
+                        <img
+                            src={`${media_url}/2021/01/logo-arisen-white-horizontal.png`}
+                            width="210px"
+                            height="80px"
                         />
                     </div>
                 </Grid>

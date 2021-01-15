@@ -1,33 +1,36 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 
-const Redirect = ({ imgSrc, title, labelLogoSrc }) => {
+import { useRouter } from "next/router";
+
+import { makeStyles } from "@material-ui/core/styles";
+import ButtonBase from "@material-ui/core/ButtonBase";
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        backgroundColor: "#F1E5F9",
+        height: 150,
+        width: "100%",
+        display: "flex",
+        position: "relative",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: "10px",
+    },
+    titleIcon: {
+        position: "absolute",
+        bottom: 0,
+    },
+}));
+
+const Redirect = ({ imgSrc, title, icon, titleIcon, href }) => {
+    const classes = useStyles();
+    const router = useRouter();
+
     return (
-        <>
-            <div
-                style={{
-                    background: `url(${imgSrc})`,
-                    height: 150,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
-            >
-                <Typography>SAMPLE</Typography>
-            </div>
-            <div
-                style={{
-                    marginTop: 10,
-                    display: "flex",
-                    justifyContent: "center",
-                }}
-            >
-                <Button variant="outlined" color="primary" disableElevation>
-                    <Typography>{title}</Typography>
-                </Button>
-            </div>
-        </>
+        <ButtonBase className={classes.root} onClick={() => router.push(href)}>
+            <div>{icon}</div>
+            <div className={classes.titleIcon}>{titleIcon}</div>
+        </ButtonBase>
     );
 };
 

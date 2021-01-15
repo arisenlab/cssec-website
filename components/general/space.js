@@ -1,7 +1,7 @@
 import React from "react";
 
-const Space = () => {
-    return <div style={{ height: 25 }} />;
+const Space = ({ height = 25 }) => {
+    return <div style={{ height: height }} />;
 };
 
 export default Space;

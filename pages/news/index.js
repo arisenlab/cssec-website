@@ -2,12 +2,11 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 
 import NewsCard from "../../components/news/news-card";
 import NewsWideCard from "../../components/news/news-wide-card";
 import Space from "../../components/general/space";
-import SectionHeader from "../../components/news/section-header";
+import SectionHeader from "../../components/general/section-header";
 
 import WP from "../../utils/wordpress";
 
@@ -35,7 +34,7 @@ const News = ({ upperNews, lowerNews, users }) => {
         <>
             <Space />
 
-            <SectionHeader />
+            <SectionHeader text="New Top 3 Posts" />
 
             <Grid container spacing={2} className={classes.upperRoot}>
                 {upperNews.map(news => {
@@ -50,20 +49,9 @@ const News = ({ upperNews, lowerNews, users }) => {
                 })}
             </Grid>
 
-            <div className={classes.seeMore}>
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    disableElevation
-                    size="medium"
-                >
-                    See More
-                </Button>
-            </div>
-
             <Space />
 
-            <SectionHeader />
+            <SectionHeader text="Remaining Posts" />
 
             <Space />
 
@@ -80,7 +68,7 @@ const News = ({ upperNews, lowerNews, users }) => {
                 })}
             </Grid>
 
-            <div className={classes.seeMore}>
+            {/* <div className={classes.seeMore}>
                 <Button
                     variant="outlined"
                     color="primary"
@@ -89,7 +77,7 @@ const News = ({ upperNews, lowerNews, users }) => {
                 >
                     See More
                 </Button>
-            </div>
+            </div> */}
         </>
     );
 };

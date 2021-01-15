@@ -1,4 +1,5 @@
 import React from "react";
+
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -6,8 +7,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Space from "../../components/general/space";
 import Redirect from "../../components/it-week/redirect";
+import EventsList from "../../components/events/events-list";
 
 import ITWeekActs from "../../data/it-week-acts";
+
+import { media_url } from "../../utils/constants";
+import google_calendar from "../../utils/google";
+
+import { getDay, format, isSameDay } from "date-fns";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -20,12 +27,20 @@ const useStyles = makeStyles(theme => ({
     },
     itWeekDescription: {
         padding: "10px",
-        textIndent: "50px",
+        textIndent: "30px",
         marginTop: 10,
+    },
+    description: {
+        textAlign: "justify",
+    },
+    centeredAndCropped: {
+        objectFit: "cover",
+        width: "100%",
+        height: "100%",
     },
 }));
 
-const ITWeek = () => {
+const ITWeek = ({ day_events }) => {
     const classes = useStyles();
 
     return (
@@ -33,34 +48,49 @@ const ITWeek = () => {
             <Space />
 
             <Grid container spacing={2}>
-                <Grid item md={8}>
-                    <Paper>
-                        <Typography>IT Week Banner</Typography>
-                    </Paper>
-                    <Paper className={classes.itWeekDescription}>
-                        <Typography variant="body1" component="p">
-                            Despite the hindrance towards the conduct of various
-                            face-to-face events created by the pandemic, the
-                            annually held Information Technology (IT) Week shall
-                            be pursued virtually this year. The Computer Studies
-                            Student Executive Council (CSSEC) shall spearhead
-                            the IT Week 2021 with the theme “Thriving through
-                            Adversity: Enabling Technologies for Digital
-                            Opportunities and Vitality” on January 17-23, 2021.
-                            With utilization of available resources online, the
-                            CSSEC shall make the week-long celebration possible
-                            to further the knowledge and interest of Computer
-                            Studies students in their field of learning.{" "}
-                        </Typography>
-                    </Paper>
+                <Grid container item md={8}>
+                    <Grid item xs={12}>
+                        <img
+                            src={`${media_url}/2021/01/itweek2021_banner.jpg`}
+                            width="100%"
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Paper className={classes.itWeekDescription}>
+                            <Typography
+                                variant="body1"
+                                component="p"
+                                className={classes.description}
+                            >
+                                Despite the hindrance towards the conduct of
+                                various face-to-face events created by the
+                                pandemic, the annually held Information
+                                Technology (IT) Week shall be pursued virtually
+                                this year. The Computer Studies Student
+                                Executive Council (CSSEC) shall spearhead the IT
+                                Week 2021 with the theme “Thriving through
+                                Adversity: Enabling Technologies for Digital
+                                Opportunities and Vitality” on January 17-23,
+                                2021. With utilization of available resources
+                                online, the CSSEC shall make the week-long
+                                celebration possible to further the knowledge
+                                and interest of Computer Studies students in
+                                their field of learning.{" "}
+                            </Typography>
+                        </Paper>
+                    </Grid>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Paper>
-                        <Typography>Upcoming Events</Typography>
-                    </Paper>
-                    <Paper>
-                        <Typography>Ad Space</Typography>
-                    </Paper>
+                    <Grid container spacing={1}>
+                        <Grid item xs={12}>
+                            <EventsList day_events={day_events} />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Paper>
+                                <Typography>Ad Space</Typography>
+                            </Paper>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
 
@@ -68,9 +98,10 @@ const ITWeek = () => {
 
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4}>
-                    <Paper>
-                        <Typography>Ad Space</Typography>
-                    </Paper>
+                    <img
+                        src={`${media_url}/2021/01/adspace_pcbuilders.jpg`}
+                        className={classes.centeredAndCropped}
+                    />
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <Paper style={{ padding: "10px" }}>
@@ -79,13 +110,15 @@ const ITWeek = () => {
                         </Typography>
                     </Paper>
                     <Grid container spacing={2} style={{ marginTop: 10 }}>
-                        {ITWeekActs.map(image => {
+                        {ITWeekActs.map(act => {
                             return (
-                                <Grid item xs={6} md={4} key={image.title}>
+                                <Grid item xs={6} md={4} key={act.title}>
                                     <Redirect
-                                        imgSrc={image.backgroundURL}
-                                        title={image.title}
-                                        labelLogoSrc={image.labelLogo}
+                                        imgSrc={act.backgroundURL}
+                                        title={act.title}
+                                        icon={act.icon}
+                                        titleIcon={act.titleIcon}
+                                        href={act.href}
                                     />
                                 </Grid>
                             );
@@ -96,5 +129,27 @@ const ITWeek = () => {
         </div>
     );
 };
+
+export async function getStaticProps(ctx) {
+    try {
+        const events = (
+            await google_calendar.events.list({
+                calendarId:
+                    "c_sdrpb712hak15bufnam7apmtgo@group.calendar.google.com",
+                orderBy: "startTime",
+                singleEvents: true,
+                timeMin: new Date(),
+                maxResults: 10,
+            })
+        ).data.items;
+        //const day_events = events;
+        const day_events = events.filter(event =>
+            isSameDay(new Date(event.start.dateTime), new Date())
+        );
+        return { props: { day_events }, revalidate: 10 };
+    } catch (err) {
+        return { props: { day_events: [] }, revalidate: 10 };
+    }
+}
 
 export default ITWeek;

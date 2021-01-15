@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
+import { format } from "date-fns";
+
 const NewsWideCard = ({ post, author }) => {
     const router = useRouter();
     const [renderedExcerpt, setRenderedExcerpt] = React.useState("");
@@ -45,8 +47,14 @@ const NewsWideCard = ({ post, author }) => {
                     />
                     <Typography color="textSecondary">
                         {author
-                            ? `${author}/${post.date}`
-                            : `Unknown/${post.date}`}
+                            ? `${author} on ${format(
+                                  new Date(post.date),
+                                  "MMM dd yyyy p"
+                              )}`
+                            : `Unknown on ${format(
+                                  new Date(post.date),
+                                  "MMM dd yyyy p"
+                              )}`}
                     </Typography>
                     <Typography
                         variant="body1"

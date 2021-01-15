@@ -15,6 +15,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Space from "../../components/general/space";
 
+import { frontend_url } from "../../utils/constants";
+
 import WP from "../../utils/wordpress";
 import WPGBlocks from "react-gutenberg";
 
@@ -67,6 +69,38 @@ const Slug = ({ post, author, recent }) => {
 
     return (
         <div className={classes.root}>
+            <Head>
+                <title>{post.title.rendered} - CSSEC Posts</title>
+                <meta
+                    name="description"
+                    content={post.excerpt.rendered.replace(/<[^>]+>/g, "")}
+                />
+                <meta name="twitter:card" value="summary" />
+                <meta property="og:title" content={post.title.rendered} />
+                <meta property="og:type" content="article" />
+                {post.jetpack_featured_media_url ? (
+                    <>
+                        <meta
+                            property="og:image"
+                            content={post.jetpack_featured_media_url}
+                        />
+                        <meta
+                            name="twitter:image"
+                            content={post.jetpack_featured_media_url}
+                        />
+                    </>
+                ) : (
+                    <></>
+                )}
+                <meta
+                    property="og:url"
+                    content={`${frontend_url}/news/${post.slug}`}
+                />
+                <meta
+                    property="og:description"
+                    content={post.excerpt.rendered.replace(/<[^>]+>/g, "")}
+                />
+            </Head>
             <Space />
             <Grid container spacing={2}>
                 <Grid item md={8}>

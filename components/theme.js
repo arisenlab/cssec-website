@@ -23,30 +23,42 @@ const theme = createMuiTheme({
         },
         h1: {
             fontSize: "5rem",
-            fontFamily: "Source Sans Pro",
+            fontFamily: "Archivo",
             fontWeight: 900,
         },
         h2: {
-            fontFamily: "Source Sans Pro",
+            fontFamily: "Archivo",
             fontWeight: 900,
         },
         h3: {
-            fontFamily: "Source Sans Pro",
+            fontFamily: "Archivo",
             fontWeight: 700,
         },
         h4: {
-            fontFamily: "Source Sans Pro",
+            fontFamily: "Archivo",
             fontWeight: 700,
         },
         h5: {
-            fontFamily: "Source Sans Pro",
+            fontFamily: "Archivo",
             fontWeight: 600,
         },
         h6: {
-            fontFamily: "Source Sans Pro",
+            fontFamily: "Archivo",
             fontWeight: 400,
         },
-        fontFamily: "Source Sans Pro",
+        subtitle1: {
+            fontFamily: "Open Sans",
+        },
+        subtitle2: {
+            fontFamily: "Open Sans",
+        },
+        body1: {
+            fontFamily: "Open Sans",
+        },
+        body2: {
+            fontFamily: "Open Sans",
+        },
+        fontFamily: "Archivo",
         fontWeight: 300,
     },
 });

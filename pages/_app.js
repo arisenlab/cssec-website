@@ -13,6 +13,11 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import Header from "../components/general/header";
 import Footer from "../components/general/footer";
 
+import { frontend_url } from "../utils/constants";
+import * as gtag from "../utils/gtag";
+
+import routes from "../navigation/routes";
+
 NProgress.configure({
     showSpinner: false,
 });
@@ -23,6 +28,7 @@ Router.onRouteChangeStart = () => {
 
 Router.onRouteChangeComplete = url => {
     NProgress.done();
+    //gtag.pageview(url);
 };
 
 Router.onRouteChangeError = () => {
@@ -31,6 +37,25 @@ Router.onRouteChangeError = () => {
 
 export default function CSSECFrontEnd(props) {
     const { Component, pageProps } = props;
+    const router = useRouter();
+
+    const findRouteObject = () => {
+        let submenuObject = null;
+        let menuObject = routes.find(route => {
+            if ("submenu" in routes) {
+                submenuObject = routes.submenu.find(
+                    sub => sub.href === router.pathname
+                );
+                return submenuObject;
+            } else {
+                return route.href === router.pathname;
+            }
+        });
+
+        return submenuObject ? submenuObject : menuObject;
+    };
+
+    const routeObject = findRouteObject();
 
     React.useEffect(() => {
         // Remove the server-side injected CSS.
@@ -38,15 +63,45 @@ export default function CSSECFrontEnd(props) {
         if (jssStyles) {
             jssStyles.parentElement.removeChild(jssStyles);
         }
+
+        router.events.on("routeChangeComplete", () => {
+            window.scroll({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            });
+        });
     }, []);
 
     return (
         <React.Fragment>
             <Head>
-                <title>My page</title>
+                {routeObject ? (
+                    <>
+                        <title>{routeObject.page} - CSSEC</title>
+                        <meta name="twitter:card" value="summary" />
+                        <meta property="og:title" content={routeObject.page} />
+                        <meta property="og:type" content="website" />
+                        <meta
+                            property="og:url"
+                            content={`${frontend_url}${routeObject.href}`}
+                        />
+                    </>
+                ) : (
+                    <title>CSSEC</title>
+                )}
+
+                <meta
+                    name="CSSEC"
+                    content="Computer Studies Executive Council of Ateneo de Davao University"
+                />
                 <meta
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width"
+                />
+                <meta
+                    httpEquiv="Content-Type"
+                    content="text/html; charset=utf-8"
                 />
             </Head>
             <ThemeProvider theme={theme}>

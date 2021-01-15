@@ -7,11 +7,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import BusinessIcon from "@material-ui/icons/Business";
 
 import ImageGallery from "react-image-gallery";
-
-import accss_act_data from "../../data/accss-activities";
 
 import { media_url } from "../../utils/constants";
 
@@ -52,6 +49,12 @@ const useStyles = makeStyles(theme => ({
         margin: "auto",
     },
     tab: { backgroundColor: "#622A55" },
+    tab1: {
+        [theme.breakpoints.down("md")]: {
+            maxWidth: "100%",
+            width: "100%",
+        },
+    },
 }));
 
 const Activities = ({ activities }) => {
@@ -88,6 +91,8 @@ const Activities = ({ activities }) => {
                 <Tabs
                     value={value}
                     onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons="on"
                     aria-label="wrapped label tabs example"
                 >
                     {activities.map(activity => {
@@ -96,6 +101,7 @@ const Activities = ({ activities }) => {
                                 value={activity.id}
                                 label={activity.acf.name}
                                 wrapped
+                                disableRipple
                                 {...a11yProps(`${activity.id}`)}
                                 key={activity.id}
                             />
@@ -111,7 +117,7 @@ const Activities = ({ activities }) => {
                         key={activity.id}
                     >
                         <Grid container spacing={2} alignItems="center">
-                            <Grid item md={5}>
+                            <Grid item xs={12} md={5}>
                                 <Typography variant="h3">
                                     {activity.acf.name}
                                 </Typography>
@@ -119,7 +125,7 @@ const Activities = ({ activities }) => {
                                     {activity.acf.description}
                                 </Typography>
                             </Grid>
-                            <Grid item md={7}>
+                            <Grid item xs={12} md={7}>
                                 {hasPictures(activity.acf.number_of_pics) ? (
                                     <>
                                         <ImageGallery

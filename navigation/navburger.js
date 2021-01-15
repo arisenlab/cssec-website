@@ -1,4 +1,7 @@
 import React from "react";
+
+import { useRouter } from "next/router";
+
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -25,6 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 const NavBurger = ({ onChosen }) => {
     const classes = useStyles();
+    const router = useRouter();
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
@@ -52,7 +56,11 @@ const NavBurger = ({ onChosen }) => {
                     return (
                         <React.Fragment key={link.page}>
                             {!link.submenu ? (
-                                <ListItem button key={link.page}>
+                                <ListItem
+                                    button
+                                    key={link.page}
+                                    onClick={() => router.push(link.href)}
+                                >
                                     <ListItemText
                                         primary={
                                             <Typography variant="h6">
@@ -91,6 +99,11 @@ const NavBurger = ({ onChosen }) => {
                                                             classes.nested
                                                         }
                                                         key={linkSub.page}
+                                                        onClick={() =>
+                                                            router.push(
+                                                                linkSub.href
+                                                            )
+                                                        }
                                                     >
                                                         <ListItemText
                                                             primary={
