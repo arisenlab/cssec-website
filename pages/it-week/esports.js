@@ -17,6 +17,8 @@ import Space from "../../components/general/space";
 import esports from "../../data/esports";
 import Youtube from "../../components/it-week/Youtube";
 
+import getYouTubeID from "get-youtube-id";
+
 const useStyles = makeStyles(theme => ({
     root: {
         width: "95%",
@@ -34,15 +36,6 @@ const useStyles = makeStyles(theme => ({
 const Esports = () => {
     const classes = useStyles();
     const router = useRouter();
-
-    const opts = {
-        height: "390",
-        width: "640",
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-            autoplay: 1,
-        },
-    };
 
     const [videoName, setVideoName] = React.useState("Dota 2");
     const [videoLink, setVideoLink] = React.useState(esports[0].stream_link);
@@ -91,7 +84,6 @@ const Esports = () => {
                                             >
                                                 <Paper
                                                     style={{
-                                                        display: "flex",
                                                         padding: 10,
                                                         width: "100%",
                                                     }}
@@ -149,7 +141,7 @@ const Esports = () => {
                         />
                     </Typography>
                     <Paper style={{ padding: 10, margin: "auto" }}>
-                        <Youtube videoId={videoLink} />
+                        <Youtube videoId={getYouTubeID(videoLink)} />
                     </Paper>
                 </Grid>
             </Grid>

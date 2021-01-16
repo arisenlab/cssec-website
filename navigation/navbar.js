@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -16,7 +17,7 @@ import routes from "./routes";
 
 const useStyles = makeStyles(theme => ({
     linkStyles: {
-        margin: theme.spacing(1),
+        margin: theme.spacing(2),
     },
     collapseDesign: {
         backgroundColor: "#622A55",
@@ -24,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Navbar = () => {
+const Navbar = ({ currentRoute }) => {
     const classes = useStyles();
 
     const router = useRouter();
@@ -72,17 +73,23 @@ const Navbar = () => {
                 return (
                     <React.Fragment key={link.page}>
                         {!link.submenu ? (
-                            <Link href={link.href} key={link.page}>
-                                <Button
-                                    variant="text"
-                                    href="#"
-                                    className={classes.linkStyles}
-                                >
-                                    <Typography style={{ color: "#fff" }}>
-                                        {link.page}
-                                    </Typography>
-                                </Button>
-                            </Link>
+                            <>
+                                <Link href={link.href} key={link.page}>
+                                    <Button
+                                        variant="text"
+                                        href="#"
+                                        className={classes.linkStyles}
+                                    >
+                                        <Typography style={{ color: "#fff" }}>
+                                            {currentRoute === link.page ? (
+                                                <u>{link.page}</u>
+                                            ) : (
+                                                <>{link.page}</>
+                                            )}
+                                        </Typography>
+                                    </Button>
+                                </Link>
+                            </>
                         ) : (
                             <>
                                 <Button
@@ -151,9 +158,20 @@ const Navbar = () => {
                                                                         }
                                                                     >
                                                                         <Typography>
-                                                                            {
-                                                                                linkSub.page
-                                                                            }
+                                                                            {currentRoute ===
+                                                                            linkSub.page ? (
+                                                                                <u>
+                                                                                    {
+                                                                                        linkSub.page
+                                                                                    }
+                                                                                </u>
+                                                                            ) : (
+                                                                                <>
+                                                                                    {
+                                                                                        linkSub.page
+                                                                                    }
+                                                                                </>
+                                                                            )}
                                                                         </Typography>
                                                                     </MenuItem>
                                                                 );

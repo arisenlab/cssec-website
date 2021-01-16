@@ -35,6 +35,11 @@ const NavBurger = ({ onChosen }) => {
         setOpen(!open);
     };
 
+    const handleNavigate = href => {
+        router.push(href);
+        onChosen();
+    };
+
     return (
         <div className={classes.list}>
             <List
@@ -59,7 +64,7 @@ const NavBurger = ({ onChosen }) => {
                                 <ListItem
                                     button
                                     key={link.page}
-                                    onClick={() => router.push(link.href)}
+                                    onClick={() => handleNavigate(link.href)}
                                 >
                                     <ListItemText
                                         primary={
@@ -100,7 +105,7 @@ const NavBurger = ({ onChosen }) => {
                                                         }
                                                         key={linkSub.page}
                                                         onClick={() =>
-                                                            router.push(
+                                                            handleNavigate(
                                                                 linkSub.href
                                                             )
                                                         }

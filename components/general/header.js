@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
         color: "#fff",
     },
     navLinks: {
+        backgroundColor: "#3A1534",
         [theme.breakpoints.down("md")]: {
             display: "none",
         },
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Header = () => {
+const Header = ({ currentRoute }) => {
     const classes = useStyles();
     const [drawer, setDrawer] = React.useState(false);
 
@@ -79,7 +80,7 @@ const Header = () => {
                     </Typography>
 
                     <div className={classes.navLinks}>
-                        <Navbar />
+                        <Navbar currentRoute={currentRoute} />
                     </div>
                 </Toolbar>
             </AppBar>

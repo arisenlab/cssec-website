@@ -36,11 +36,11 @@ const theme = createMuiTheme({
         },
         h4: {
             fontFamily: "Archivo",
-            fontWeight: 700,
+            fontWeight: 600,
         },
         h5: {
             fontFamily: "Archivo",
-            fontWeight: 600,
+            fontWeight: 500,
         },
         h6: {
             fontFamily: "Archivo",
@@ -48,12 +48,14 @@ const theme = createMuiTheme({
         },
         subtitle1: {
             fontFamily: "Open Sans",
+            fontWeight: 300,
         },
         subtitle2: {
             fontFamily: "Open Sans",
         },
         body1: {
             fontFamily: "Open Sans",
+            fontWeight: 400,
         },
         body2: {
             fontFamily: "Open Sans",

@@ -42,8 +42,8 @@ export default function CSSECFrontEnd(props) {
     const findRouteObject = () => {
         let submenuObject = null;
         let menuObject = routes.find(route => {
-            if ("submenu" in routes) {
-                submenuObject = routes.submenu.find(
+            if ("submenu" in route) {
+                submenuObject = route.submenu.find(
                     sub => sub.href === router.pathname
                 );
                 return submenuObject;
@@ -107,7 +107,7 @@ export default function CSSECFrontEnd(props) {
             <ThemeProvider theme={theme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
-                <Header />
+                <Header currentRoute={routeObject ? routeObject.page : null} />
                 <Component {...pageProps} />
                 <Footer />
             </ThemeProvider>

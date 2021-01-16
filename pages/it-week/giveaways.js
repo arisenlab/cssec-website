@@ -45,7 +45,7 @@ const Giveaways = () => {
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <Typography variant="h4">
+                        <Typography variant="h4" style={{ color: "#5D2252" }}>
                             Information Technology Week - Giveaways
                         </Typography>
                     </Paper>

@@ -5,6 +5,7 @@ import Fab from "@material-ui/core/Fab";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
+import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Space from "./space";
@@ -27,14 +28,16 @@ const useStyles = makeStyles(theme => ({
     partnersIcons: {
         display: "flex",
         alignContent: "center",
-        justifyContent: "space-between",
         alignItems: "center",
     },
     footer: {
         backgroundColor: "#3A1534",
         color: "#ffffff",
         paddingLeft: "10px",
+        margin: 0,
+        width: "100%",
     },
+    link: { color: "#fff" },
 }));
 
 const Footer = () => {
@@ -44,7 +47,7 @@ const Footer = () => {
             <Space />
             <Grid
                 container
-                spacing={1}
+                spacing={3}
                 alignItems="center"
                 className={classes.footer}
             >
@@ -74,14 +77,21 @@ const Footer = () => {
                             </Typography>
 
                             <Typography variant="subtitle1">
-                                Ateneo de Davao Research in Information Systems
-                                and Software Engineering Lab
+                                <Link
+                                    href="https://arisen.addu.edu.ph"
+                                    color="inherit"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    Ateneo de Davao Research in Information
+                                    Systems and Software Engineering Lab
+                                </Link>
                             </Typography>
                         </dd>
                     </dl>
                 </Grid>
 
-                <Grid item md={3}>
+                <Grid item md={4}>
                     <dl>
                         <dt>
                             <Typography variant="body1">
@@ -141,28 +151,32 @@ const Footer = () => {
                 </Grid>
 
                 <Grid item md={4} align="center">
-                    <div className={classes.partnersIcons}>
-                        <img
-                            src={`${media_url}/2021/01/logo-cssec-white.png`}
-                            width="60px"
-                            height="60px"
-                        />
-                        <img
-                            src={`${media_url}/2021/01/logo-cs.png`}
-                            width="60px"
-                            height="60px"
-                        />
-                        <img
-                            src={`${media_url}/2021/01/logo_addu_white.png`}
-                            width="60px"
-                            height="60px"
-                        />
-                        <img
-                            src={`${media_url}/2021/01/logo-arisen-white-horizontal.png`}
-                            width="210px"
-                            height="80px"
-                        />
-                    </div>
+                    <Grid container spacing={2} alignItems="center">
+                        <Grid item xs={2}>
+                            <img
+                                src={`${media_url}/2021/01/logo-cssec-white.png`}
+                                width="100%"
+                            />
+                        </Grid>
+                        <Grid item xs={2}>
+                            <img
+                                src={`${media_url}/2021/01/logo-cs.png`}
+                                width="100%"
+                            />
+                        </Grid>
+                        <Grid item xs={2}>
+                            <img
+                                src={`${media_url}/2021/01/logo_addu_white.png`}
+                                width="100%"
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <img
+                                src={`${media_url}/2021/01/logo-arisen-white-horizontal.png`}
+                                width="100%"
+                            />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </>
