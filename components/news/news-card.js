@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
+import Paper from "@material-ui/core/Paper";
+import ButtonBase from "@material-ui/core/ButtonBase";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
@@ -33,6 +35,11 @@ const useStyles = makeStyles({
     cardActionsStyle: {
         display: "flex",
         flexDirection: "row-reverse",
+    },
+    button: {
+        backgroundColor: "#622A55",
+        color: "#fff",
+        padding: 10,
     },
 });
 
@@ -70,29 +77,32 @@ const NewsCard = ({ post, author }) => {
                     component="h2"
                     dangerouslySetInnerHTML={{ __html: renderedTitle }}
                 />
-                <Typography className={classes.pos} color="textSecondary">
+                <Typography
+                    className={classes.pos}
+                    color="textSecondary"
+                    variant="subtitle2"
+                >
                     {`${author} on ${format(
                         new Date(post.date),
                         "MMM dd yyyy p"
                     )}`}
                 </Typography>
                 <Typography
-                    variant="body1"
+                    variant="body2"
                     component="p"
-                    dangerouslySetInnerHTML={{ __html: renderedExcerpt }}
+                    dangerouslySetInnerHTML={{
+                        __html: renderedExcerpt.substring(0, 250) + "...",
+                    }}
                 />
             </CardContent>
             <CardActions
                 style={{ display: "flex", flexDirection: "row-reverse" }}
             >
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    disableElevation
-                    onClick={() => router.push(`/news/${post.slug}`)}
-                >
-                    Read More
-                </Button>
+                <ButtonBase onClick={() => router.push(`/news/${post.slug}`)}>
+                    <Paper className={classes.button}>
+                        <Typography>Read More</Typography>
+                    </Paper>
+                </ButtonBase>
             </CardActions>
         </Card>
     );

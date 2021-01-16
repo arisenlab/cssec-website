@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -33,6 +34,9 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
+        display: "flex",
+        alignItems: "center",
+        padding: 5,
     },
 }));
 
@@ -74,10 +78,16 @@ const Header = ({ currentRoute }) => {
                             }}
                         />
                     </Drawer>
-
-                    <Typography variant="h6" className={classes.title}>
-                        Computer Studies Student Executive Council
-                    </Typography>
+                    <div className={classes.title}>
+                        <Image
+                            src={`${media_url}/2021/01/logo-cssec-white.png`}
+                            height={50}
+                            width={50}
+                        />
+                        <Typography variant="h6" style={{ paddingLeft: 15 }}>
+                            Computer Studies Student Executive Council
+                        </Typography>
+                    </div>
 
                     <div className={classes.navLinks}>
                         <Navbar currentRoute={currentRoute} />

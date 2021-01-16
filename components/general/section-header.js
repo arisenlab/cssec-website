@@ -9,6 +9,7 @@ const SectionHeader = ({ text }) => {
             square={true}
             style={{
                 backgroundColor: "#9C7684",
+                color: "#fff",
                 width: "60%",
                 paddingTop: 10,
                 paddingBottom: 10,

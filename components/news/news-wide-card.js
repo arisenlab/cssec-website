@@ -2,8 +2,8 @@ import React from "react";
 
 import { useRouter } from "next/router";
 
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import ButtonBase from "@material-ui/core/ButtonBase";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
@@ -67,14 +67,19 @@ const NewsWideCard = ({ post, author }) => {
                             flexDirection: "row-reverse",
                         }}
                     >
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            disableElevation
+                        <ButtonBase
                             onClick={() => router.push(`/news/${post.slug}`)}
                         >
-                            Read More
-                        </Button>
+                            <Paper
+                                style={{
+                                    backgroundColor: "#622A55",
+                                    color: "#fff",
+                                    padding: 10,
+                                }}
+                            >
+                                <Typography>Read More</Typography>
+                            </Paper>
+                        </ButtonBase>
                     </div>
                 </Grid>
             </Grid>

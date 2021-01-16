@@ -6,7 +6,7 @@ module.exports = {
     // Target must be serverless
     target: "serverless",
     images: {
-        domains: [backend_url],
+        domains: ["cssec-api.addu.edu.ph"],
     },
     async rewrites() {
         return [

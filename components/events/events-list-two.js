@@ -3,11 +3,9 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import { format, differenceInSeconds, formatDistanceToNow } from "date-fns";
+import { format } from "date-fns";
 
 const EventsListTwo = ({ day_events }) => {
-    const dateToday = new Date();
-
     const [events, setEvents] = React.useState([]);
     const [currentTime, setCurrentTime] = React.useState(new Date());
     const [currentString, setCurrentString] = React.useState(null);
@@ -46,7 +44,7 @@ const EventsListTwo = ({ day_events }) => {
                 style={{
                     padding: 15,
                     overflowY: "scroll",
-                    height: "325px",
+                    height: "500px",
                 }}
             >
                 <Typography variant="subtitle1" gutterBottom>
