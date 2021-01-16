@@ -134,8 +134,7 @@ export async function getStaticProps(ctx) {
     try {
         const events = (
             await google_calendar.events.list({
-                calendarId:
-                    "c_sdrpb712hak15bufnam7apmtgo@group.calendar.google.com",
+                calendarId: process.env.GOOGLE_CALENDAR_ID,
                 orderBy: "startTime",
                 singleEvents: true,
                 timeMin: new Date(),
