@@ -41,6 +41,9 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: "rgba(186, 131, 180, 0.29)",
         padding: 20,
     },
+    text: {
+        wordWrap: "break-word",
+    },
 }));
 
 const Events = ({
@@ -150,7 +153,12 @@ const Events = ({
                                                             classes.paper
                                                         }
                                                     >
-                                                        <Typography variant="body1">
+                                                        <Typography
+                                                            variant="body1"
+                                                            className={
+                                                                classes.text
+                                                            }
+                                                        >
                                                             {`${format(
                                                                 new Date(
                                                                     event.start.dateTime
@@ -171,7 +179,12 @@ const Events = ({
                                                             classes.paper
                                                         }
                                                     >
-                                                        <Typography variant="body1">
+                                                        <Typography
+                                                            variant="body1"
+                                                            className={
+                                                                classes.text
+                                                            }
+                                                        >
                                                             {event.summary}
                                                         </Typography>
                                                     </Paper>
@@ -182,7 +195,12 @@ const Events = ({
                                                             classes.paper
                                                         }
                                                     >
-                                                        <Typography variant="body1">
+                                                        <Typography
+                                                            variant="body1"
+                                                            className={
+                                                                classes.text
+                                                            }
+                                                        >
                                                             {event.location}
                                                         </Typography>
                                                     </Paper>

@@ -80,8 +80,16 @@ export default function CSSECFrontEnd(props) {
                     <>
                         <title>{routeObject.page} - CSSEC</title>
                         <meta name="twitter:card" value="summary" />
+                        <meta
+                            name="twitter:image"
+                            content={`${cdn_url}/utilities/cssec-twitter-seo.png`}
+                        />
                         <meta property="og:title" content={routeObject.page} />
                         <meta property="og:type" content="website" />
+                        <meta
+                            property="og:image"
+                            content={`${cdn_url}/utilities/cssec-default-seo.png`}
+                        />
                         <meta
                             property="og:url"
                             content={`${frontend_url}${routeObject.href}`}

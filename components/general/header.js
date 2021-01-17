@@ -11,6 +11,8 @@ import Drawer from "@material-ui/core/Drawer";
 import Navbar from "../../navigation/navbar";
 import NavBurger from "../../navigation/navburger";
 
+import { cdn_url } from "../../utils/constants";
+
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -37,6 +39,9 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         alignItems: "center",
         padding: 5,
+    },
+    titleText: {
+        paddingLeft: 15,
     },
 }));
 
@@ -80,11 +85,11 @@ const Header = ({ currentRoute }) => {
                     </Drawer>
                     <div className={classes.title}>
                         <Image
-                            src={`${media_url}/2021/01/logo-cssec-white.png`}
+                            src={`${cdn_url}/utilities/logo-cssec-white.png`}
                             height={50}
                             width={50}
                         />
-                        <Typography variant="h6" style={{ paddingLeft: 15 }}>
+                        <Typography variant="h6" className={classes.titleText}>
                             Computer Studies Student Executive Council
                         </Typography>
                     </div>

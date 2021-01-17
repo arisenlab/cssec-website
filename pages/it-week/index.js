@@ -11,7 +11,7 @@ import EventsList from "../../components/events/events-list";
 
 import ITWeekActs from "../../data/it-week-acts";
 
-import { media_url } from "../../utils/constants";
+import { cdn_url } from "../../utils/constants";
 import google_calendar from "../../utils/google";
 
 import { isSameDay } from "date-fns";
@@ -51,7 +51,7 @@ const ITWeek = ({ day_events }) => {
                 <Grid container item md={8}>
                     <Grid item xs={12}>
                         <img
-                            src={`${media_url}/2021/01/itweek2021_banner.jpg`}
+                            src={`${cdn_url}/it-week-2021/banner.jpg`}
                             width="100%"
                         />
                     </Grid>
@@ -99,7 +99,7 @@ const ITWeek = ({ day_events }) => {
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4}>
                     <img
-                        src={`${media_url}/2021/01/adspace_pcbuilders.jpg`}
+                        src={`${cdn_url}/it-week-2021/adspace_pcbuilders.jpg`}
                         className={classes.centeredAndCropped}
                     />
                 </Grid>

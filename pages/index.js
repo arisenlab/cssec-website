@@ -1,9 +1,9 @@
 import React from "react";
+
+import Image from "next/image";
+
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
-import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import NewsCard from "../components/news/news-card";
@@ -11,35 +11,36 @@ import NewsCard from "../components/news/news-card";
 import EventsListTwo from "../components/events/events-list-two";
 import { isSameDay } from "date-fns";
 import google_calendar from "../utils/google";
+import { cdn_url } from "../utils/constants";
 
 import Space from "../components/general/space";
+import Banner from "../components/home/banner";
 import WP from "../utils/wordpress";
 
 const useStyles = makeStyles({
-    root: {
-        flexGrow: 1,
-    },
-    media: {
-        height: 180,
-    },
-    cardWidth: {
-        minWidth: 275,
-    },
     slidePad: {
-        width: "100vw",
+        height: "80vh",
+        width: "100%",
         height: "30vw",
         paddingLeft: "20px",
         paddingRight: "20px",
     },
-    imageBG: {
-        width: "100%",
-        height: "50vw",
+    bannerContainer: {
+        height: "90vh",
         backgroundImage:
-            "url(https://cssec-api.addu.edu.ph/wp-content/uploads/2021/01/home_slide1-scaled.jpg)",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "leftcenter",
-        backgroundSize: "cover",
+            "-webkit-linear-gradient(150deg, #814573 50%, #fff 50%)",
+        //    "linear-gradient(280.39deg, #814573 48.4%, rgba(255, 255, 255, 0) 103.04%)",
+
+        //backgroundImage: `url(${cdn_url}/it-week-2021/home_slide1.jpg)`,
+        //backgroundRepeat: "no-repeat",
+        //backgroundPosition: "leftcenter",
+        //backgroundSize: "cover",
         /*backgroundAttachment: "fixed",*/
+    },
+    bannerContent: {
+        position: "relative",
+        float: "right",
+        zIndex: 3,
     },
     cssecSection: {
         width: "100%",
@@ -72,19 +73,10 @@ const Home = ({ upperNews, users, dayEvents }) => {
     const getAuthor = author_id => {
         return users.find(user => user.id === author_id).name;
     };
+    upperNews = [];
     return (
-        <div className={classes.root}>
-            <Grid container className={classes.imageBG}>
-                <Box width={1}>
-                    <Button
-                        color="primary"
-                        href="/it-week"
-                        className={classes.itweekButton}
-                    >
-                        View More
-                    </Button>
-                </Box>
-            </Grid>
+        <>
+            <Banner />
             <Grid
                 container
                 alignItems="center"
@@ -98,14 +90,12 @@ const Home = ({ upperNews, users, dayEvents }) => {
                     spacing={2}
                     className={classes.cssecSectionContent}
                 >
-                    <Hidden smDown>
-                        <Grid item md={6} align="center">
-                            <img
-                                src="https://cssec-api.addu.edu.ph/wp-content/uploads/2021/01/home_slide2.png"
-                                width="65%"
-                            />
-                        </Grid>
-                    </Hidden>
+                    <Grid item md={6} align="center">
+                        <img
+                            src={`${cdn_url}/it-week-2021/chammie-uni.png`}
+                            width="65%"
+                        />
+                    </Grid>
                     <Grid item md={6}>
                         <Typography variant="h3" gutterBottom>
                             About CSSEC Website
@@ -158,43 +148,53 @@ const Home = ({ upperNews, users, dayEvents }) => {
                             impact.
                         </Typography>
                     </Grid>
-                    <Hidden smDown>
-                        <Grid item md={6} align="center">
-                            <img
-                                src="https://cssec-api.addu.edu.ph/wp-content/uploads/2021/01/home_slide2.png"
-                                width="65%"
-                            />
-                        </Grid>
-                    </Hidden>
+                    <Grid item md={6} align="center">
+                        <img
+                            src={`${cdn_url}/it-week-2021/chammie-chan.png`}
+                            width="65%"
+                        />
+                    </Grid>
                 </Grid>
             </Grid>
             <Space />
-            <Grid
-                container
-                spacing={2}
-                className={classes.newsEventsContainer}
-                alignItems="center"
-            >
+            <Grid container spacing={3} className={classes.newsEventsContainer}>
                 <Grid container item xs={12} md={8}>
                     <Typography variant="h3">News</Typography>
-                    <Grid container spacing={2}>
-                        {upperNews.map(news => {
-                            return (
-                                <Grid item xs={12} md={4} key={news.id}>
-                                    <NewsCard
-                                        post={news}
-                                        author={getAuthor(news.author)}
+                    <Grid container item spacing={2}>
+                        {upperNews.length > 0 ? (
+                            <>
+                                {upperNews.map(news => {
+                                    return (
+                                        <Grid item xs={12} md={4} key={news.id}>
+                                            <NewsCard
+                                                post={news}
+                                                author={getAuthor(news.author)}
+                                            />
+                                        </Grid>
+                                    );
+                                })}
+                            </>
+                        ) : (
+                            <>
+                                <Grid item xs={12} md={12} align="center">
+                                    <Image
+                                        src={`${cdn_url}/chammie-chan/sad-chammie-chan.png`}
+                                        height={500}
+                                        width={300}
                                     />
+                                    <Typography variant="h4">
+                                        No News Yet
+                                    </Typography>
                                 </Grid>
-                            );
-                        })}
+                            </>
+                        )}
                     </Grid>
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <EventsListTwo day_events={dayEvents} />
                 </Grid>
             </Grid>
-        </div>
+        </>
     );
 };
 export async function getStaticProps() {

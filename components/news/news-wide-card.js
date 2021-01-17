@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import Typography from "@material-ui/core/Typography";
-import ButtonBase from "@material-ui/core/ButtonBase";
+import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
@@ -67,19 +67,13 @@ const NewsWideCard = ({ post, author }) => {
                             flexDirection: "row-reverse",
                         }}
                     >
-                        <ButtonBase
+                        <Button
+                            variant="contained"
+                            color="primary"
                             onClick={() => router.push(`/news/${post.slug}`)}
                         >
-                            <Paper
-                                style={{
-                                    backgroundColor: "#622A55",
-                                    color: "#fff",
-                                    padding: 10,
-                                }}
-                            >
-                                <Typography>Read More</Typography>
-                            </Paper>
-                        </ButtonBase>
+                            <Typography>Read More</Typography>
+                        </Button>
                     </div>
                 </Grid>
             </Grid>

@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Space from "./space";
 
-import { media_url } from "../../utils/constants";
+import { cdn_url } from "../../utils/constants";
 
 const useStyles = makeStyles(theme => ({
     scContainer: {
@@ -154,25 +154,25 @@ const Footer = () => {
                     <Grid container spacing={2} alignItems="center">
                         <Grid item xs={2}>
                             <img
-                                src={`${media_url}/2021/01/logo-cssec-white.png`}
+                                src={`${cdn_url}/utilities/logo-cssec-white.png`}
                                 width="100%"
                             />
                         </Grid>
                         <Grid item xs={2}>
                             <img
-                                src={`${media_url}/2021/01/logo-cs.png`}
+                                src={`${cdn_url}/utilities/logo-cs.png`}
                                 width="100%"
                             />
                         </Grid>
                         <Grid item xs={2}>
                             <img
-                                src={`${media_url}/2021/01/logo_addu_white.png`}
+                                src={`${cdn_url}/utilities/logo-addu-white.png`}
                                 width="100%"
                             />
                         </Grid>
                         <Grid item xs={6}>
                             <img
-                                src={`${media_url}/2021/01/logo-arisen-white-horizontal.png`}
+                                src={`${cdn_url}/utilities/logo-arisen-white-horizontal.png`}
                                 width="100%"
                             />
                         </Grid>

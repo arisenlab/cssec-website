@@ -4,7 +4,7 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 
-import { media_url, backend_url } from "../utils/constants";
+import { cdn_url, backend_url } from "../utils/constants";
 
 export default class MyDocument extends Document {
     render() {
@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
                     <link
                         rel="icon"
                         type="image/png"
-                        href={`${media_url}/2021/01/logo-cssec-purple.png`}
+                        href={`${cdn_url}/utilities/logo-cssec-purple.png`}
                     />
                 </Head>
                 <body>

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
+import { cdn_url } from "../../utils/constants";
+
 const HelpDesk = () => {
     return (
         <Grid
@@ -16,9 +18,9 @@ const HelpDesk = () => {
         >
             <Grid item>
                 <Image
-                    src={`${media_url}/2021/01/logo-cssec-purple.png`}
-                    height={250}
-                    width={250}
+                    src={`${cdn_url}/chammie-chan/tear-chammie-chan.png`}
+                    height={400}
+                    width={300}
                 />
             </Grid>
             <Grid item>

@@ -15,7 +15,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Space from "../../components/general/space";
 
-import { frontend_url } from "../../utils/constants";
+import { frontend_url, cdn_url } from "../../utils/constants";
 
 import WP from "../../utils/wordpress";
 import WPGBlocks from "react-gutenberg";
@@ -90,7 +90,16 @@ const Slug = ({ post, author, recent }) => {
                         />
                     </>
                 ) : (
-                    <></>
+                    <>
+                        <meta
+                            property="og:image"
+                            content={`${cdn_url}/utilities/cssec-default-seo.png`}
+                        />
+                        <meta
+                            name="twitter:image"
+                            content={`${cdn_url}/utilities/cssec-twitter-seo.png`}
+                        />
+                    </>
                 )}
                 <meta
                     property="og:url"
