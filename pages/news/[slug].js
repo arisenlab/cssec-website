@@ -25,14 +25,6 @@ const useStyles = makeStyles(theme => ({
         width: "90%",
         margin: "auto",
     },
-    crop: {
-        width: "100%",
-        overflow: "hidden",
-    },
-    cropImg: {
-        width: "100%",
-        height: "400px",
-    },
     centeredAndCropped: {
         objectFit: "cover",
         width: "100%",
