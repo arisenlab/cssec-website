@@ -1,5 +1,8 @@
 import React from "react";
 
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
 import { useRouter } from "next/router";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,13 +13,17 @@ import Grid from "@material-ui/core/Grid";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
+const EventCard = dynamic(() => import("../../components/events/event-card"));
+
 import Space from "../../components/general/space";
 
 import days from "../../data/days_data";
 
 import google_calendar from "../../utils/google";
 
-import { format, isSameDay } from "date-fns";
+import { cdn_url } from "../../utils/constants";
+
+import { isSameDay } from "date-fns";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,9 +37,6 @@ const useStyles = makeStyles(theme => ({
     paper: {
         padding: 10,
     },
-    adSpace: {
-        marginTop: 10,
-    },
     headerEvent: {
         backgroundColor: "#622A55",
         color: "#fff",
@@ -40,9 +44,6 @@ const useStyles = makeStyles(theme => ({
     contentEvent: {
         backgroundColor: "rgba(186, 131, 180, 0.29)",
         padding: 20,
-    },
-    text: {
-        wordWrap: "break-word",
     },
 }));
 
@@ -108,11 +109,8 @@ const Events = ({
                                 </ButtonBase>
                             </Grid>
                         ))}
-                        <Grid item className={classes.adSpace}>
-                            <Paper>Ad Space</Paper>
-                        </Grid>
                     </Grid>
-                    <Grid container item sm={9} spacing={1} direction="column">
+                    <Grid container item sm={6} spacing={1} direction="column">
                         <Grid item align="center">
                             <Paper className={classes.headerEvent}>
                                 <Typography variant="h6">{dayDate}</Typography>
@@ -121,102 +119,40 @@ const Events = ({
                         <Grid item align="center">
                             <Paper className={classes.contentEvent}>
                                 <Grid container spacing={2} direction="column">
-                                    <Grid container item spacing={2}>
-                                        <Grid item xs={4}>
-                                            <Typography variant="h6">
-                                                Time
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={4}>
-                                            <Typography variant="h6">
-                                                Activity
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={4}>
-                                            <Typography variant="h6">
-                                                Venue
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                    {eventList && eventList.length !== 0 ? (
-                                        eventList.map(event => (
-                                            <Grid
-                                                container
-                                                item
-                                                spacing={2}
-                                                key={event.id}
-                                                alignItems="center"
-                                            >
-                                                <Grid item xs={4}>
-                                                    <Paper
-                                                        className={
-                                                            classes.paper
-                                                        }
-                                                    >
-                                                        <Typography
-                                                            variant="body1"
-                                                            className={
-                                                                classes.text
-                                                            }
-                                                        >
-                                                            {`${format(
-                                                                new Date(
-                                                                    event.start.dateTime
-                                                                ),
-                                                                "p"
-                                                            )} - ${format(
-                                                                new Date(
-                                                                    event.end.dateTime
-                                                                ),
-                                                                "p"
-                                                            )}`}
-                                                        </Typography>
-                                                    </Paper>
-                                                </Grid>
-                                                <Grid item xs={4}>
-                                                    <Paper
-                                                        className={
-                                                            classes.paper
-                                                        }
-                                                    >
-                                                        <Typography
-                                                            variant="body1"
-                                                            className={
-                                                                classes.text
-                                                            }
-                                                        >
-                                                            {event.summary}
-                                                        </Typography>
-                                                    </Paper>
-                                                </Grid>
-                                                <Grid item xs={4}>
-                                                    <Paper
-                                                        className={
-                                                            classes.paper
-                                                        }
-                                                    >
-                                                        <Typography
-                                                            variant="body1"
-                                                            className={
-                                                                classes.text
-                                                            }
-                                                        >
-                                                            {event.location}
-                                                        </Typography>
-                                                    </Paper>
-                                                </Grid>
+                                    <Grid item xs={12}>
+                                        {eventList && eventList.length !== 0 ? (
+                                            eventList.map(event => (
+                                                <EventCard
+                                                    key={event.id}
+                                                    summary={event.summary}
+                                                    timeStart={
+                                                        event.start.dateTime
+                                                    }
+                                                    timeEnd={event.end.dateTime}
+                                                    location={event.location}
+                                                    description={
+                                                        event.description
+                                                    }
+                                                />
+                                            ))
+                                        ) : (
+                                            <Grid item align="center">
+                                                <Typography variant="h6">
+                                                    No Event/s
+                                                </Typography>
                                             </Grid>
-                                        ))
-                                    ) : (
-                                        <Grid item align="center">
-                                            <Typography variant="h6">
-                                                No Event/s
-                                            </Typography>
-                                        </Grid>
-                                    )}
+                                        )}
+                                    </Grid>
                                 </Grid>
                             </Paper>
                         </Grid>
+                    </Grid>
+                    <Grid item md={3}>
+                        <Image
+                            src={`${cdn_url}/ads/batucs-2.png`}
+                            width={650}
+                            height={400}
+                        />
                     </Grid>
                 </Grid>
             </Grid>

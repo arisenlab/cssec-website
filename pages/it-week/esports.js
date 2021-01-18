@@ -15,9 +15,12 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Space from "../../components/general/space";
 import esports from "../../data/esports";
+import FacebookVideo from "../../components/it-week/FacebookVideo";
 import Youtube from "../../components/it-week/Youtube";
 
 import getYouTubeID from "get-youtube-id";
+
+import { cdn_url } from "../../utils/constants";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -84,7 +87,7 @@ const Esports = () => {
                                             >
                                                 <Paper
                                                     style={{
-                                                        padding: 10,
+                                                        padding: 5,
                                                         width: "100%",
                                                     }}
                                                 >
@@ -115,18 +118,11 @@ const Esports = () => {
                         </Paper>
                     </Grid>
                     <Grid item>
-                        <Paper>
-                            <Typography variant="h2">
-                                INTO GAMING ATAY
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item>
-                        <Paper>
-                            <Typography variant="h2">
-                                IT WEEK LEADER BOARDS
-                            </Typography>
-                        </Paper>
+                        <Image
+                            src={`${cdn_url}/ads/dimple-1.png`}
+                            width={500}
+                            height={300}
+                        />
                     </Grid>
                 </Grid>
                 <Grid item xs={12} md={8} style={{ padding: 20 }}>
@@ -140,16 +136,21 @@ const Esports = () => {
                             }}
                         />
                     </Typography>
-                    {/* <Youtube videoId={getYouTubeID(videoLink)} /> */}
-                    <iframe
-                        src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Faddu.cs%2Fvideos%2F838675613363644%2F&show_text=0"
-                        width="100%"
-                        height="100%"
-                        style={{ border: "none", overflow: "hidden" }}
-                        scrolling="no"
-                        allowFullScreen={true}
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    ></iframe>
+                    {/* <FacebookVideo /> */}
+                    <Grid container justify="center" alignItems="center">
+                        <Grid item xs={6} align="center">
+                            <Typography variant="h3">
+                                Comming Soon....
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6} align="center">
+                            <Image
+                                src={`${cdn_url}/chammie-chan/yay-chammie-chan.png`}
+                                height={600}
+                                width={300}
+                            />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
             <Space />

@@ -1,13 +1,17 @@
 import React from "react";
 
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Space from "../../components/general/space";
-import Redirect from "../../components/it-week/redirect";
-import EventsList from "../../components/events/events-list";
+
+const Redirect = dynamic(() => import("../../components/it-week/redirect"));
+const EventsList = dynamic(() => import("../../components/events/events-list"));
 
 import ITWeekActs from "../../data/it-week-acts";
 
@@ -85,10 +89,12 @@ const ITWeek = ({ day_events }) => {
                         <Grid item xs={12}>
                             <EventsList day_events={day_events} />
                         </Grid>
-                        <Grid item xs={12}>
-                            <Paper>
-                                <Typography>Ad Space</Typography>
-                            </Paper>
+                        <Grid item xs={12} align="center">
+                            <Image
+                                src={`${cdn_url}/ads/batucs-1.png`}
+                                width={450}
+                                height={150}
+                            />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -98,9 +104,10 @@ const ITWeek = ({ day_events }) => {
 
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4}>
-                    <img
-                        src={`${cdn_url}/it-week-2021/adspace_pcbuilders.jpg`}
-                        className={classes.centeredAndCropped}
+                    <Image
+                        src={`${cdn_url}/ads/pcbuilders-1.png`}
+                        width={450}
+                        height={500}
                     />
                 </Grid>
                 <Grid item xs={12} md={8}>

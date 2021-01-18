@@ -1,5 +1,8 @@
 import React from "react";
 
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
 import { useRouter } from "next/router";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,7 +15,14 @@ import Divider from "@material-ui/core/Divider";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Space from "../../components/general/space";
-import Giveaway from "../../components/it-week/giveaway";
+
+const GiveawayScroll = dynamic(() =>
+    import("../../components/it-week/giveaway_scroll")
+);
+
+import giveaways from "../../data/giveaways";
+
+import { cdn_url } from "../../utils/constants";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,6 +36,17 @@ const useStyles = makeStyles(theme => ({
     paper: {
         padding: 10,
     },
+    sponsorsContent: {
+        width: "95%",
+        margin: "auto",
+    },
+    giveawaysContent: {
+        padding: 10,
+        [theme.breakpoints.down("md")]: {
+            wrap: "wrap",
+        },
+    },
+    giveawaysContent2: {},
 }));
 
 const Giveaways = () => {
@@ -45,42 +66,17 @@ const Giveaways = () => {
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <Typography variant="h4" style={{ color: "#5D2252" }}>
+                        <Typography variant="h4" color="primary">
                             Information Technology Week - Giveaways
                         </Typography>
                     </Paper>
                 </Grid>
                 <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                        <Typography variant="h5">
-                            Join IT Week 2021 Giveaways!
-                            <Divider
-                                variant="fullWidth"
-                                style={{
-                                    height: 5,
-                                    backgroundColor: "#622a55",
-                                }}
-                            />
-                        </Typography>
-                        <Grid container spacing={3} style={{ padding: 10 }}>
-                            <Grid item md={3}>
-                                <Giveaway />
-                            </Grid>
-                            <Grid item md={3}>
-                                <Giveaway />
-                            </Grid>
-                            <Grid item md={3}>
-                                <Giveaway />
-                            </Grid>
-                            <Grid item md={3}>
-                                <Giveaway />
-                            </Grid>
-                        </Grid>
-                    </Paper>
+                    <GiveawayScroll giveaways={giveaways} />
                 </Grid>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <Typography variant="h5">
+                        <Typography variant="h5" color="primary">
                             Sponsors List
                             <Divider
                                 variant="fullWidth"
@@ -90,6 +86,32 @@ const Giveaways = () => {
                                 }}
                             />
                         </Typography>
+                        <Space height={10} />
+                        <div className={classes.sponsorsContent}>
+                            <Grid container spacing={3} alignItems="center">
+                                <Grid item>
+                                    <Image
+                                        src={`${cdn_url}/ads/pcbuilders-2.png`}
+                                        width={580}
+                                        height={230}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <Image
+                                        src={`${cdn_url}/ads/dimple-3.png`}
+                                        width={410}
+                                        height={230}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <Image
+                                        src={`${cdn_url}/ads/batucs-3.png`}
+                                        width={275}
+                                        height={230}
+                                    />
+                                </Grid>
+                            </Grid>
+                        </div>
                     </Paper>
                 </Grid>
             </Grid>

@@ -1,13 +1,21 @@
 import React from "react";
 
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
-import NewsCard from "../../components/news/news-card";
-import NewsWideCard from "../../components/news/news-wide-card";
 import Space from "../../components/general/space";
 import SectionHeader from "../../components/general/section-header";
 
+const NewsCard = dynamic(() => import("../../components/news/news-card"));
+const NewsWideCard = dynamic(() =>
+    import("../../components/news/news-wide-card")
+);
+
+import { cdn_url } from "../../utils/constants";
 import WP from "../../utils/wordpress";
 
 const useStyles = makeStyles({
@@ -37,16 +45,33 @@ const News = ({ upperNews, lowerNews, users }) => {
             <SectionHeader text="New Top 3 Posts" />
 
             <Grid container spacing={2} className={classes.upperRoot}>
-                {upperNews.map(news => {
-                    return (
-                        <Grid item xs={12} md={4} key={news.id}>
-                            <NewsCard
-                                post={news}
-                                author={getAuthor(news.author)}
+                {upperNews.length > 0 ? (
+                    upperNews.map(news => {
+                        return (
+                            <Grid item xs={12} md={4} key={news.id}>
+                                <NewsCard
+                                    post={news}
+                                    author={getAuthor(news.author)}
+                                />
+                            </Grid>
+                        );
+                    })
+                ) : (
+                    <Grid container justify="center" alignItems="center">
+                        <Grid item xs={6} align="center">
+                            <Typography variant="h3">
+                                Patiently Waiting...
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6} align="center">
+                            <Image
+                                src={`${cdn_url}/chammie-chan/determined-chammie-chan.png`}
+                                height={500}
+                                width={300}
                             />
                         </Grid>
-                    );
-                })}
+                    </Grid>
+                )}
             </Grid>
 
             <Space />
@@ -56,28 +81,34 @@ const News = ({ upperNews, lowerNews, users }) => {
             <Space />
 
             <Grid container spacing={1} className={classes.upperRoot}>
-                {lowerNews.map(news => {
-                    return (
-                        <Grid item xs={12} key={news.id}>
-                            <NewsWideCard
-                                post={news}
-                                author={getAuthor(news.author)}
+                {lowerNews.length > 0 ? (
+                    lowerNews.map(news => {
+                        return (
+                            <Grid item xs={12} key={news.id}>
+                                <NewsWideCard
+                                    post={news}
+                                    author={getAuthor(news.author)}
+                                />
+                            </Grid>
+                        );
+                    })
+                ) : (
+                    <Grid container justify="center" alignItems="center">
+                        <Grid item xs={6} align="center">
+                            <Image
+                                src={`${cdn_url}/chammie-chan/tear-chammie-chan.png`}
+                                height={600}
+                                width={400}
                             />
                         </Grid>
-                    );
-                })}
+                        <Grid item xs={6} align="center">
+                            <Typography variant="h3">
+                                I hope there will be more news to come...
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                )}
             </Grid>
-
-            {/* <div className={classes.seeMore}>
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    disableElevation
-                    size="medium"
-                >
-                    See More
-                </Button>
-            </div> */}
         </>
     );
 };
@@ -88,8 +119,6 @@ export async function getStaticProps() {
             WP.posts().categories(2).perPage(100).order("desc").orderby("date"),
             WP.users(),
         ]);
-
-        //sort(posts).desc(post => post.date);
 
         let upperNews = posts.slice(0, 3);
         let lowerNews = posts.slice(3, posts.length);

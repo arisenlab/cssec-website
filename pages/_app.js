@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import Router, { useRouter } from "next/router";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,8 +11,8 @@ import NProgress from "nprogress";
 
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import Header from "../components/general/header";
-import Footer from "../components/general/footer";
+const Header = dynamic(() => import("../components/general/header"));
+const Footer = dynamic(() => import("../components/general/footer"));
 
 import { frontend_url } from "../utils/constants";
 import * as gtag from "../utils/gtag";

@@ -1,9 +1,15 @@
 import React from "react";
 
-import Banner from "../../../components/accss/banner";
-import About from "../../../components/accss/about";
-import NewsAndUpdates from "../../../components/accss/news_events";
-import Activities from "../../../components/accss/activities";
+import dynamic from "next/dynamic";
+
+const Banner = dynamic(() => import("../../../components/accss/banner"));
+const About = dynamic(() => import("../../../components/accss/about"));
+const NewsAndUpdates = dynamic(() =>
+    import("../../../components/accss/news_events")
+);
+const Activities = dynamic(() =>
+    import("../../../components/accss/activities")
+);
 
 import Space from "../../../components/general/space";
 
@@ -40,7 +46,6 @@ export async function getStaticProps() {
             WP.media(),
         ]);
 
-        sort(accss_posts).desc(post => post.date);
         sort(accss_activities).asc(activity => activity.acf.name);
 
         return {

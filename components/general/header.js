@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
         padding: 5,
     },
     titleText: {
-        paddingLeft: 15,
+        paddingLeft: 10,
     },
 }));
 

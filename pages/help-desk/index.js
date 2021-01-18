@@ -20,7 +20,7 @@ const HelpDesk = () => {
                 <Image
                     src={`${cdn_url}/chammie-chan/tear-chammie-chan.png`}
                     height={400}
-                    width={300}
+                    width={250}
                 />
             </Grid>
             <Grid item>

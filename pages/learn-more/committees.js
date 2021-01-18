@@ -1,9 +1,12 @@
 import React from "react";
+
+import dynamic from "next/dynamic";
+
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Ccard from "../../components/compCom/Ccard";
+const Ccard = dynamic(() => import("../../components/compCom/Ccard"));
 
 import WP from "../../utils/wordpress";
 
