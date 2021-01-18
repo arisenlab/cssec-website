@@ -4,7 +4,7 @@ const giveaways = [
         name: "CS Shirt",
         desc:
             "This is your chance to win the official Computer Studies Cluster Shirt of this school year!  Just do a few things, and that's it! You'll then be qualified to win this prize! Good luck!",
-        img_src: "",
+        img_src: `/it-week-2021/giveaways/cs_shirt.jpg`,
         link: "https://giv.gg/iChfuK",
     },
     {

@@ -46,7 +46,6 @@ const useStyles = makeStyles(theme => ({
             wrap: "wrap",
         },
     },
-    giveawaysContent2: {},
 }));
 
 const Giveaways = () => {

@@ -2,7 +2,6 @@ import React from "react";
 
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import Paper from "@material-ui/core/Paper";
 
 import { cdn_url } from "../../utils/constants";
 
