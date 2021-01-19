@@ -38,6 +38,15 @@ const useStyles = makeStyles(theme => ({
         width: "100%",
     },
     link: { color: "#fff" },
+    copyrightContainer: {
+        backgroundColor: theme.palette.primary.main,
+        width: "100%",
+        padding: 10,
+    },
+    copyrightText: {
+        textAlign: "center",
+        color: "#fff",
+    },
 }));
 
 const Footer = () => {
@@ -151,34 +160,39 @@ const Footer = () => {
                 </Grid>
 
                 <Grid item md={4} align="center">
-                    <Grid container spacing={2} alignItems="center">
+                    <Grid container alignItems="center">
                         <Grid item xs={2}>
                             <img
                                 src={`${cdn_url}/utilities/logo-cssec-white.png`}
-                                width="100%"
+                                width="80%"
                             />
                         </Grid>
                         <Grid item xs={2}>
                             <img
                                 src={`${cdn_url}/utilities/logo-cs.png`}
-                                width="100%"
+                                width="80%"
                             />
                         </Grid>
                         <Grid item xs={2}>
                             <img
                                 src={`${cdn_url}/utilities/logo-addu-white.png`}
-                                width="100%"
+                                width="80%"
                             />
                         </Grid>
                         <Grid item xs={6}>
                             <img
                                 src={`${cdn_url}/utilities/logo-arisen-white-horizontal.png`}
-                                width="100%"
+                                width="80%"
                             />
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
+            <div className={classes.copyrightContainer}>
+                <Typography className={classes.copyrightText}>
+                    Copyright {new Date().getFullYear()} | ARISEN & CSSEC
+                </Typography>
+            </div>
         </>
     );
 };
