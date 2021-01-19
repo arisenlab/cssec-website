@@ -88,12 +88,21 @@ const ITWeek = ({ day_events }) => {
                         <Grid item xs={12}>
                             <EventsList day_events={day_events} />
                         </Grid>
-                        <Grid item xs={12} align="center">
-                            <img
-                                src={`${cdn_url}/ads/batucs-1.png`}
-                                width="100%"
-                                height="200px"
-                            />
+                        <Grid item xs={12}>
+                            <div
+                                style={{
+                                    height: "150px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <img
+                                    src={`${cdn_url}/ads/batucs-1.png`}
+                                    width="300px"
+                                    height="100px"
+                                />
+                            </div>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -102,8 +111,12 @@ const ITWeek = ({ day_events }) => {
             <Space />
 
             <Grid container spacing={2}>
-                <Grid item xs={12} md={4}>
-                    <img src={`${cdn_url}/ads/pcbuilders-1.png`} width="100%" />
+                <Grid item xs={12} md={4} align="center">
+                    <img
+                        src={`${cdn_url}/ads/pcbuilders-1.png`}
+                        width="380px"
+                        height="475px"
+                    />
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <Paper style={{ padding: "10px" }}>

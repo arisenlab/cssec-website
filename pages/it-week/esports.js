@@ -115,8 +115,12 @@ const Esports = () => {
                             </Grid>
                         </Paper>
                     </Grid>
-                    <Grid item>
-                        <img src={`${cdn_url}/ads/dimple-1.png`} width="100%" />
+                    <Grid item align="center">
+                        <img
+                            src={`${cdn_url}/ads/dimple-1.png`}
+                            width="400px"
+                            height="240px"
+                        />
                     </Grid>
                 </Grid>
                 <Grid item xs={12} md={8} style={{ padding: 20 }}>

@@ -146,7 +146,7 @@ const Events = ({
                             </Paper>
                         </Grid>
                     </Grid>
-                    <Grid item md={3}>
+                    <Grid item sm={3} align="center">
                         <img src={`${cdn_url}/ads/batucs-2.png`} width="100%" />
                     </Grid>
                 </Grid>
