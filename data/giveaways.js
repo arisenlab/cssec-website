@@ -45,7 +45,7 @@ const giveaways = [
         desc:
             "Getting on with the trend? Then check these out! Just a few steps and this too might be yours! Big thanks to Alca Tie-Dyes!",
         img_src: "/it-week-2021/giveaways/alca_dyes.jpg",
-        link: "https://google.com",
+        link: "https://giv.gg/VlONuT",
     },
 ];
 

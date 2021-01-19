@@ -24224,7 +24224,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var Header = next_dynamic__WEBPACK_IMPORTED_MODULE_5___default()(_c = function _c() {
-  return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../components/general/header */ "./components/general/header.js"));
+  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../components/general/header */ "./components/general/header.js"));
 }, {
   loadableGenerated: {
     webpack: function webpack() {
@@ -24235,7 +24235,7 @@ var Header = next_dynamic__WEBPACK_IMPORTED_MODULE_5___default()(_c = function _
 });
 _c2 = Header;
 var Footer = next_dynamic__WEBPACK_IMPORTED_MODULE_5___default()(_c3 = function _c3() {
-  return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../components/general/footer */ "./components/general/footer.js"));
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../components/general/footer */ "./components/general/footer.js"));
 }, {
   loadableGenerated: {
     webpack: function webpack() {

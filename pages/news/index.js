@@ -28,6 +28,10 @@ const useStyles = makeStyles({
         display: "flex",
         justifyContent: "center",
     },
+    progressContent: {
+        height: "80vh",
+        width: "100%",
+    },
 });
 
 const News = ({ upperNews, lowerNews, users }) => {
@@ -39,49 +43,53 @@ const News = ({ upperNews, lowerNews, users }) => {
 
     return (
         <>
-            <Space />
-
-            <SectionHeader text="New Top 3 Posts" />
-
-            <Grid container spacing={2} className={classes.upperRoot}>
-                {upperNews.length > 0 ? (
-                    upperNews.map(news => {
-                        return (
-                            <Grid item xs={12} md={4} key={news.id}>
-                                <NewsCard
-                                    post={news}
-                                    author={getAuthor(news.author)}
-                                />
-                            </Grid>
-                        );
-                    })
-                ) : (
-                    <Grid container justify="center" alignItems="center">
-                        <Grid item xs={6} align="center">
-                            <Typography variant="h3">
-                                Patiently Waiting...
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={6} align="center">
-                            <img
-                                src={`${cdn_url}/chammie-chan/determined-chammie-chan.png`}
-                                height={500}
-                                width={300}
-                            />
-                        </Grid>
+            {upperNews.length > 0 ? (
+                <>
+                    <Space />
+                    <SectionHeader text="New Top 3 Posts" />
+                    <Grid container spacing={2} className={classes.upperRoot}>
+                        {upperNews.map(news => {
+                            return (
+                                <Grid item xs={12} md={4} key={news.id}>
+                                    <NewsCard
+                                        post={news}
+                                        author={getAuthor(news.author)}
+                                    />
+                                </Grid>
+                            );
+                        })}
                     </Grid>
-                )}
-            </Grid>
+                </>
+            ) : (
+                <Grid
+                    container
+                    justify="center"
+                    alignItems="center"
+                    className={classes.progressContent}
+                >
+                    <Grid item xs={12} align="center">
+                        <img
+                            src={`${cdn_url}/chammie-chan/determined-chammie-chan.png`}
+                            width="25%"
+                        />
+                        <Typography variant="h3">
+                            Currently in Progress....
+                        </Typography>
+                    </Grid>
+                </Grid>
+            )}
 
-            <Space />
+            {upperNews.length > 3 ? (
+                <>
+                    <Space />
+                    <SectionHeader text="Remaining Posts" />
+                    <Space />
+                </>
+            ) : null}
 
-            <SectionHeader text="Remaining Posts" />
-
-            <Space />
-
-            <Grid container spacing={1} className={classes.upperRoot}>
-                {lowerNews.length > 0 ? (
-                    lowerNews.map(news => {
+            {lowerNews.length > 0 ? (
+                <Grid container spacing={1} className={classes.upperRoot}>
+                    {lowerNews.map(news => {
                         return (
                             <Grid item xs={12} key={news.id}>
                                 <NewsWideCard
@@ -90,24 +98,9 @@ const News = ({ upperNews, lowerNews, users }) => {
                                 />
                             </Grid>
                         );
-                    })
-                ) : (
-                    <Grid container justify="center" alignItems="center">
-                        <Grid item xs={6} align="center">
-                            <img
-                                src={`${cdn_url}/chammie-chan/tear-chammie-chan.png`}
-                                height={600}
-                                width={400}
-                            />
-                        </Grid>
-                        <Grid item xs={6} align="center">
-                            <Typography variant="h3">
-                                I hope there will be more news to come...
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                )}
-            </Grid>
+                    })}
+                </Grid>
+            ) : null}
         </>
     );
 };

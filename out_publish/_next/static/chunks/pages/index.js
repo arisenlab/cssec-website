@@ -4820,7 +4820,7 @@ var _jsxFileName = "D:\\ADDUCS\\CSSEC\\cssec-website\\pages\\index.js",
 
 
 var CSSEC = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(_c = function _c() {
-  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../components/home/cssec */ "./components/home/cssec.js"));
+  return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../components/home/cssec */ "./components/home/cssec.js"));
 }, {
   loadableGenerated: {
     webpack: function webpack() {
@@ -4831,7 +4831,7 @@ var CSSEC = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(_c = function _c
 });
 _c2 = CSSEC;
 var CSSECWebsite = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(_c3 = function _c3() {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../components/home/cssec-website */ "./components/home/cssec-website.js"));
+  return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../components/home/cssec-website */ "./components/home/cssec-website.js"));
 }, {
   loadableGenerated: {
     webpack: function webpack() {
@@ -4842,7 +4842,7 @@ var CSSECWebsite = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(_c3 = fun
 });
 _c4 = CSSECWebsite;
 var ITWeekBanner = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(_c5 = function _c5() {
-  return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../components/home/itweek-banner */ "./components/home/itweek-banner.js"));
+  return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../components/home/itweek-banner */ "./components/home/itweek-banner.js"));
 }, {
   loadableGenerated: {
     webpack: function webpack() {
@@ -4853,7 +4853,7 @@ var ITWeekBanner = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(_c5 = fun
 });
 _c6 = ITWeekBanner;
 var NewsEvents = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(_c7 = function _c7() {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../components/home/news-events */ "./components/home/news-events.js"));
+  return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../components/home/news-events */ "./components/home/news-events.js"));
 }, {
   loadableGenerated: {
     webpack: function webpack() {
