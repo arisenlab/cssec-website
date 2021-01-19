@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -84,7 +84,7 @@ const Header = ({ currentRoute }) => {
                         />
                     </Drawer>
                     <div className={classes.title}>
-                        <Image
+                        <img
                             src={`${cdn_url}/utilities/logo-cssec-white.png`}
                             height={50}
                             width={50}

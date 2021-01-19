@@ -1,7 +1,5 @@
 import React from "react";
 
-import Image from "next/image";
-
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -53,10 +51,9 @@ const NewsEvents = ({ posts, dayEvents, users }) => {
                     ) : (
                         <>
                             <Grid item xs={12} md={12} align="center">
-                                <Image
+                                <img
                                     src={`${cdn_url}/chammie-chan/sad-chammie-chan.png`}
-                                    height={500}
-                                    width={250}
+                                    width="25%"
                                 />
                                 <Typography variant="h4">
                                     No News Yet

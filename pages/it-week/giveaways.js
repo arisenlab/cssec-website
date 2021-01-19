@@ -1,6 +1,5 @@
 import React from "react";
 
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import { useRouter } from "next/router";
@@ -87,26 +86,28 @@ const Giveaways = () => {
                         </Typography>
                         <Space height={10} />
                         <div className={classes.sponsorsContent}>
-                            <Grid container spacing={3} alignItems="center">
+                            <Grid
+                                container
+                                spacing={3}
+                                justify="center"
+                                alignItems="center"
+                            >
                                 <Grid item>
-                                    <Image
+                                    <img
                                         src={`${cdn_url}/ads/pcbuilders-2.png`}
-                                        width={580}
-                                        height={230}
+                                        width="100%"
                                     />
                                 </Grid>
                                 <Grid item>
-                                    <Image
+                                    <img
                                         src={`${cdn_url}/ads/dimple-3.png`}
-                                        width={410}
-                                        height={230}
+                                        width="100%"
                                     />
                                 </Grid>
                                 <Grid item>
-                                    <Image
+                                    <img
                                         src={`${cdn_url}/ads/batucs-3.png`}
-                                        width={275}
-                                        height={230}
+                                        width="100%"
                                     />
                                 </Grid>
                             </Grid>

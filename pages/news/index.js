@@ -1,6 +1,5 @@
 import React from "react";
 
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -64,7 +63,7 @@ const News = ({ upperNews, lowerNews, users }) => {
                             </Typography>
                         </Grid>
                         <Grid item xs={6} align="center">
-                            <Image
+                            <img
                                 src={`${cdn_url}/chammie-chan/determined-chammie-chan.png`}
                                 height={500}
                                 width={300}
@@ -95,7 +94,7 @@ const News = ({ upperNews, lowerNews, users }) => {
                 ) : (
                     <Grid container justify="center" alignItems="center">
                         <Grid item xs={6} align="center">
-                            <Image
+                            <img
                                 src={`${cdn_url}/chammie-chan/tear-chammie-chan.png`}
                                 height={600}
                                 width={400}

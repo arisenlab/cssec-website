@@ -1,7 +1,5 @@
 import React from "react";
 
-import Image from "next/image";
-
 import { useRouter } from "next/router";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -91,7 +89,7 @@ const Esports = () => {
                                                         width: "100%",
                                                     }}
                                                 >
-                                                    <Image
+                                                    <img
                                                         src={logo}
                                                         width={
                                                             logoDimensions[0]
@@ -118,11 +116,7 @@ const Esports = () => {
                         </Paper>
                     </Grid>
                     <Grid item>
-                        <Image
-                            src={`${cdn_url}/ads/dimple-1.png`}
-                            width={500}
-                            height={300}
-                        />
+                        <img src={`${cdn_url}/ads/dimple-1.png`} width="100%" />
                     </Grid>
                 </Grid>
                 <Grid item xs={12} md={8} style={{ padding: 20 }}>
@@ -144,10 +138,9 @@ const Esports = () => {
                             </Typography>
                         </Grid>
                         <Grid item xs={6} align="center">
-                            <Image
+                            <img
                                 src={`${cdn_url}/chammie-chan/yay-chammie-chan.png`}
-                                height={600}
-                                width={300}
+                                width="100%"
                             />
                         </Grid>
                     </Grid>

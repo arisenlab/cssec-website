@@ -1,6 +1,5 @@
 import React from "react";
 
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import Grid from "@material-ui/core/Grid";
@@ -90,10 +89,9 @@ const ITWeek = ({ day_events }) => {
                             <EventsList day_events={day_events} />
                         </Grid>
                         <Grid item xs={12} align="center">
-                            <Image
+                            <img
                                 src={`${cdn_url}/ads/batucs-1.png`}
-                                width={450}
-                                height={150}
+                                width="100%"
                             />
                         </Grid>
                     </Grid>
@@ -104,11 +102,7 @@ const ITWeek = ({ day_events }) => {
 
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4}>
-                    <Image
-                        src={`${cdn_url}/ads/pcbuilders-1.png`}
-                        width={450}
-                        height={500}
-                    />
+                    <img src={`${cdn_url}/ads/pcbuilders-1.png`} width="100%" />
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <Paper style={{ padding: "10px" }}>

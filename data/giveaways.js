@@ -12,15 +12,15 @@ const giveaways = [
         name: "CS Custom Mousepad",
         desc:
             "This limited edition Computer Studies Cluster Mousepad won't ever show up again! If you're lucky, you'll be one of the few who will own this! This is your chance!",
-        img_src: "",
-        link: "https://google.com",
+        img_src: "/it-week-2021/giveaways/cs_mousepad.png",
+        link: "https://giv.gg/YjGalq",
     },
     {
         id: "gaming_chair",
         name: "Gaming chair",
         desc:
             "Are you worthy of being chosen by dimpleeerz?  This gamer girl will put you up to the challenge! Make sure to follow and subscribe to dimpleeerz to get the chance of winning this gaming chair!",
-        img_src: "",
+        img_src: "/it-week-2021/giveaways/gaming_chair.JPG",
         link: "https://giv.gg/P9MRbv",
     },
     {
@@ -28,15 +28,15 @@ const giveaways = [
         name: "Batucs Kitchen Gift Check",
         desc:
             "All this time at home, I bet you're hungry! Batucs Kitchen will surely give you the satisfaction of having a delicious meal.  Grab the chance to obtain these gift certificates so your next meal will be on us!",
-        img_src: "",
-        link: "https://google.com",
+        img_src: "/it-week-2021/giveaways/batucs_kitchen.jpg",
+        link: "https://giv.gg/wKkDiM",
     },
     {
         id: "pc_build",
         name: "PC Builders",
         desc:
             "Your dream gaming computer is calling you!  PC Builders will surely help you turn your dream into reality. Get this chance to obtain these gift certificates to help you build your best PC.",
-        img_src: "",
+        img_src: "/it-week-2021/giveaways/pc_builders.jpg",
         link: "https://giv.gg/vdf1oB",
     },
     {
@@ -44,7 +44,7 @@ const giveaways = [
         name: "Alca Tie-Dyes!",
         desc:
             "Getting on with the trend? Then check these out! Just a few steps and this too might be yours! Big thanks to Alca Tie-Dyes!",
-        img_src: "",
+        img_src: "/it-week-2021/giveaways/alca_dyes.jpg",
         link: "https://google.com",
     },
 ];

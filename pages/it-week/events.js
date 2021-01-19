@@ -1,6 +1,5 @@
 import React from "react";
 
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import { useRouter } from "next/router";
@@ -148,11 +147,7 @@ const Events = ({
                         </Grid>
                     </Grid>
                     <Grid item md={3}>
-                        <Image
-                            src={`${cdn_url}/ads/batucs-2.png`}
-                            width={650}
-                            height={400}
-                        />
+                        <img src={`${cdn_url}/ads/batucs-2.png`} width="100%" />
                     </Grid>
                 </Grid>
             </Grid>
