@@ -75,7 +75,7 @@ const Giveaways = () => {
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
                         <Typography variant="h5" color="primary">
-                            Sponsors List
+                            Special Thanks to these Sponsors!
                             <Divider
                                 variant="fullWidth"
                                 style={{
