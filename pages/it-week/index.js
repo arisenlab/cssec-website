@@ -92,6 +92,7 @@ const ITWeek = ({ day_events }) => {
                             <img
                                 src={`${cdn_url}/ads/batucs-1.png`}
                                 width="100%"
+                                height="200px"
                             />
                         </Grid>
                     </Grid>

@@ -68,7 +68,7 @@ const EventsList = ({ day_events }) => {
                     style={{
                         padding: 15,
                         overflowY: "scroll",
-                        height: "325px",
+                        height: "300px",
                     }}
                 >
                     <Paper
