@@ -61,7 +61,7 @@ const Header = ({ currentRoute }) => {
 
     return (
         <>
-            <AppBar position="static" style={{ backgroundColor: "#622A55" }}>
+            <AppBar position="fixed" style={{ backgroundColor: "#622A55" }}>
                 <Toolbar>
                     <IconButton
                         aria-label="open drawer"

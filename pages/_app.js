@@ -13,6 +13,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 
 const Header = dynamic(() => import("../components/general/header"));
 const Footer = dynamic(() => import("../components/general/footer"));
+import Space from "../components/general/space";
 
 import { frontend_url } from "../utils/constants";
 import * as gtag from "../utils/gtag";
@@ -117,6 +118,7 @@ export default function CSSECFrontEnd(props) {
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
                 <Header currentRoute={routeObject ? routeObject.page : null} />
+                <Space height={65} />
                 <Component {...pageProps} />
                 <Footer />
             </ThemeProvider>
