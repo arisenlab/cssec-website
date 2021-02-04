@@ -13,10 +13,6 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Space from "../../components/general/space";
 import esports from "../../data/esports";
-import FacebookVideo from "../../components/it-week/FacebookVideo";
-import Youtube from "../../components/it-week/Youtube";
-
-import getYouTubeID from "get-youtube-id";
 
 import { cdn_url } from "../../utils/constants";
 
@@ -134,7 +130,6 @@ const Esports = () => {
                             }}
                         />
                     </Typography>
-                    {/* <FacebookVideo /> */}
                     <Grid container justify="center" alignItems="center">
                         <Grid item xs={6} align="center">
                             <Typography variant="h3">
