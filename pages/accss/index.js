@@ -2,18 +2,16 @@ import React from "react";
 
 import dynamic from "next/dynamic";
 
-const Banner = dynamic(() => import("../../../components/accss/banner"));
-const About = dynamic(() => import("../../../components/accss/about"));
+const Banner = dynamic(() => import("../../components/accss/banner"));
+const About = dynamic(() => import("../../components/accss/about"));
 const NewsAndUpdates = dynamic(() =>
-    import("../../../components/accss/news_events")
+    import("../../components/accss/news_events")
 );
-const Activities = dynamic(() =>
-    import("../../../components/accss/activities")
-);
+const Activities = dynamic(() => import("../../components/accss/activities"));
 
-import Space from "../../../components/general/space";
+import Space from "../../components/general/space";
 
-import WP from "../../../utils/wordpress";
+import WP from "../../utils/wordpress";
 
 import sort from "fast-sort";
 

@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Cardcommittee = ({ imgSrc, title, description }) => {
+const CommitteeCard = ({ imgSrc, title, description }) => {
     const classes = useStyles();
     return (
         <div style={{ margin: 30 }}>
@@ -44,4 +44,4 @@ const Cardcommittee = ({ imgSrc, title, description }) => {
     );
 };
 
-export default Cardcommittee;
+export default CommitteeCard;

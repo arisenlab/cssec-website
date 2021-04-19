@@ -17,9 +17,7 @@ import routes from "./routes";
 
 const useStyles = makeStyles(theme => ({
     linkStyles: {
-        marginLeft: theme.spacing(2),
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2),
+        marginLeft: theme.spacing(1),
     },
     collapseDesign: {
         backgroundColor: "#622A55",

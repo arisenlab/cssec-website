@@ -6,9 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-const Ccard = dynamic(() => import("../../components/compCom/Ccard"));
+const CommitteeCard = dynamic(() =>
+    import("../components/committee/committee_card")
+);
 
-import WP from "../../utils/wordpress";
+import WP from "../utils/wordpress";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -27,7 +29,7 @@ const Committees = ({ committees }) => {
                 {committees.map(committee => {
                     return (
                         <Grid item md={4} key={committee.id}>
-                            <Ccard
+                            <CommitteeCard
                                 imgSrc={committee.acf.logo}
                                 title={committee.acf.committee_name}
                                 description={committee.acf.description}

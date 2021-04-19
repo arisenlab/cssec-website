@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
         color: "#fff",
     },
     navLinks: {
-        backgroundColor: "#3A1534",
         [theme.breakpoints.down("md")]: {
             display: "none",
         },

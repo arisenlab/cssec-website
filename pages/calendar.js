@@ -10,11 +10,11 @@ import TimelineDot from "@material-ui/lab/TimelineDot";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
-import Space from "../../components/general/space";
+import Space from "../components/general/space";
 
 import { differenceInSeconds, format, formatDistanceToNow } from "date-fns";
 
-import google_calendar from "../../utils/google";
+import google_calendar from "../utils/google";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Events = ({ events: cssec_events }) => {
+const Calendar = ({ events: cssec_events }) => {
     const classes = useStyles();
 
     const [events, setEvents] = React.useState([]);
@@ -174,4 +174,4 @@ export async function getStaticProps(ctx) {
     }
 }
 
-export default Events;
+export default Calendar;
