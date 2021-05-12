@@ -59,49 +59,47 @@ const Header = ({ currentRoute }) => {
     };
 
     return (
-        <>
-            <AppBar
-                position="fixed"
-                style={{ backgroundColor: "#622A55", zIndex: 1 }}
-            >
-                <Toolbar>
-                    <IconButton
-                        aria-label="open drawer"
-                        edge="start"
-                        onClick={toggleDrawer(true)}
-                        className={classes.menuButton}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+        <AppBar
+            position="fixed"
+            style={{ backgroundColor: "#622A55", zIndex: 2 }}
+        >
+            <Toolbar>
+                <IconButton
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={toggleDrawer(true)}
+                    className={classes.menuButton}
+                >
+                    <MenuIcon />
+                </IconButton>
 
-                    <Drawer
-                        anchor={"left"}
-                        open={drawer}
-                        onClose={toggleDrawer(false)}
-                    >
-                        <NavBurger
-                            onChosen={() => {
-                                setDrawer(false);
-                            }}
-                        />
-                    </Drawer>
-                    <div className={classes.title}>
-                        <img
-                            src={`${cdn_url}/utilities/logo-cssec-white.png`}
-                            height={50}
-                            width={50}
-                        />
-                        <Typography variant="h6" className={classes.titleText}>
-                            Computer Studies Student Executive Council
-                        </Typography>
-                    </div>
+                <Drawer
+                    anchor={"left"}
+                    open={drawer}
+                    onClose={toggleDrawer(false)}
+                >
+                    <NavBurger
+                        onChosen={() => {
+                            setDrawer(false);
+                        }}
+                    />
+                </Drawer>
+                <div className={classes.title}>
+                    <img
+                        src={`${cdn_url}/utilities/logo-cssec-white.png`}
+                        height={50}
+                        width={50}
+                    />
+                    <Typography variant="h6" className={classes.titleText}>
+                        Computer Studies Student Executive Council
+                    </Typography>
+                </div>
 
-                    <div className={classes.navLinks}>
-                        <Navbar currentRoute={currentRoute} />
-                    </div>
-                </Toolbar>
-            </AppBar>
-        </>
+                <div className={classes.navLinks}>
+                    <Navbar currentRoute={currentRoute} />
+                </div>
+            </Toolbar>
+        </AppBar>
     );
 };
 

@@ -8,6 +8,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../components/theme";
 
 import NProgress from "nprogress";
+import { SnackbarProvider } from "notistack";
 
 import "react-image-gallery/styles/css/image-gallery.css";
 
@@ -115,12 +116,16 @@ export default function CSSECFrontEnd(props) {
                 />
             </Head>
             <ThemeProvider theme={theme}>
-                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-                <CssBaseline />
-                <Header currentRoute={routeObject ? routeObject.page : null} />
-                <Space height={65} />
-                <Component {...pageProps} />
-                <Footer />
+                <SnackbarProvider maxSnack={3}>
+                    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                    <CssBaseline />
+                    <Header
+                        currentRoute={routeObject ? routeObject.page : null}
+                    />
+                    <Space height={65} />
+                    <Component {...pageProps} />
+                    <Footer />
+                </SnackbarProvider>
             </ThemeProvider>
         </React.Fragment>
     );

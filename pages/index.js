@@ -48,14 +48,15 @@ export async function getStaticProps() {
                 timeMin: new Date(),
                 maxResults: 10,
             })
-        ).data.items;
+        ).data
+            .items; /* 
 
         const day_events = events.filter(event =>
             isSameDay(new Date(event.start.dateTime), new Date())
-        );
+        ); */
 
         return {
-            props: { upperNews: posts, users: users, dayEvents: day_events },
+            props: { upperNews: posts, users: users, dayEvents: events },
             revalidate: 10,
         };
     } catch (err) {

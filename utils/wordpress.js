@@ -14,5 +14,7 @@ wp.accss_activities = wp.registerRoute(
     "wp/v2",
     "/accss-activities/(?P<id>[\\d]+)"
 );
+wp.help_desk_faqs = wp.registerRoute("wp/v2", "/help-desk-faqs/(?P<id>[\\d]+)");
+wp.contacts = wp.registerRoute("wp/v2", "/contacts/(?P<id>[\\d]+)");
 
 module.exports = wp;
