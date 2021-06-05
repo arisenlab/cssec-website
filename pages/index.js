@@ -1,35 +1,26 @@
 import React from "react";
 
 import dynamic from "next/dynamic";
-
-import { isSameDay } from "date-fns";
 import google_calendar from "../utils/google";
 
-import Space from "../components/general/space";
 
 const CSSEC = dynamic(() => import("../components/home/cssec"));
-const CSSECWebsite = dynamic(() => import("../components/home/cssec-website"));
-const ITWeekBanner = dynamic(() => import("../components/home/itweek-banner"));
 const NewsEvents = dynamic(() => import("../components/home/news-events"));
+const Banner = dynamic(() => import("../components/home/banner"));
 
 import WP from "../utils/wordpress";
 
-// Nightmare,
 const Home = ({ upperNews, users, dayEvents }) => {
     const getAuthor = author_id => {
         return users.find(user => user.id === author_id).name;
     };
     return (
         <>
-            <ITWeekBanner />
-
-            <CSSECWebsite />
-
-            <CSSEC />
-
-            <Space />
+            <Banner />
 
             <NewsEvents posts={upperNews} dayEvents={dayEvents} users={users} />
+
+            <CSSEC />
         </>
     );
 };

@@ -55,13 +55,13 @@ const CSSEC = () => {
                     </Typography>
                     <div
                         style={{
-                            textAlign: "right",
+                            textAlign: "center",
                             marginTop: 10,
                         }}
                     >
                         <Button
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             onClick={() => router.push("/help-desk")}
                         >
                             Help Desk
@@ -70,7 +70,7 @@ const CSSEC = () => {
                 </Grid>
                 <Grid item md={6} align="center">
                     <img
-                        src={`${cdn_url}/it-week-2021/chammie-chan.png`}
+                        src={`chammiesignrevised.png`}
                         width="65%"
                     />
                 </Grid>
