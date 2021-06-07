@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
         backgroundImage: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(cssec-logo-orig.png)`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "auto",
+        backgroundSize: "60vh 60vh",
         height: "65vh",
     },
     chamWarning: {
