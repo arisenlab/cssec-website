@@ -65,20 +65,20 @@ const ITWeek = ({ day_events }) => {
                                 component="p"
                                 className={classes.description}
                             >
-                                Despite the hindrance towards the conduct of
-                                various face-to-face events created by the
-                                pandemic, the annually held Information
-                                Technology (IT) Week shall be pursued virtually
-                                this year. The Computer Studies Student
-                                Executive Council (CSSEC) shall spearhead the IT
-                                Week 2021 with the theme “Thriving through
-                                Adversity: Enabling Technologies for Digital
-                                Opportunities and Vitality” on January 17-23,
-                                2021. With utilization of available resources
-                                online, the CSSEC shall make the week-long
-                                celebration possible to further the knowledge
-                                and interest of Computer Studies students in
-                                their field of learning.{" "}
+                                The Computer Studies and the School of
+                                Engineering and Architecture Clusters of the
+                                Ateneo de Davao University, through the
+                                initiative of its student councils – the
+                                Computer Studies Students Executive Council
+                                (CSSEC) and the Engineering and Architecture
+                                Student Executive Council (EASEC) – will be
+                                holding “Code Start!,” a Programming and
+                                Engineering Camp, with the theme: “Code your Way
+                                to the Top.” The Code Start!, a Programming and
+                                Engineering Camp for College students from all
+                                over Mindanao interested in IT and Engineering
+                                fields, will be on June 14-18, 1:00 – 7:00 PM
+                                through Zoom Cloud Meetings
                             </Typography>
                         </Paper>
                     </Grid>
@@ -108,7 +108,7 @@ const ITWeek = ({ day_events }) => {
                 <Grid item xs={12} md={8}>
                     <Paper style={{ padding: "10px" }}>
                         <Typography variant="h4" style={{ color: "#5D2252" }}>
-                            Information Technology Week 2021
+                            Code Start
                         </Typography>
                     </Paper>
                     <Grid container spacing={2} style={{ marginTop: 10 }}>

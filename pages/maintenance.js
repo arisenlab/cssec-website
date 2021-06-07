@@ -1,11 +1,14 @@
 import React from "react";
+
+import Image from "next/image";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Link from "next/link";
 
-import { useRouter } from "next/router";
+import { cdn_url } from "utils/constants";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -25,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
     textColor: {
         color: "#531444",
-        textShadow: "2px 2px 2px #000000",
+        textShadow: "1px 1px 1px #000000",
     },
     spaceMan: {
         margin: "10px",
@@ -36,14 +39,19 @@ const Maintenance = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div>
             <Grid
                 container
                 direction="column"
                 justify="center"
                 alignItems="center"
             >
-                <div className={classes.chamWarning}></div>
+                {/* <div className={classes.chamWarning}></div> */}
+                <Image
+                    src={`${cdn_url}/chammie-chan/under_maintenance.png`}
+                    height={500}
+                    width={500}
+                />
                 <Typography className={classes.textColor} variant="h2">
                     This page is under construction
                 </Typography>
@@ -55,11 +63,7 @@ const Maintenance = () => {
                     Please bear with us as we continue to improve this website.
                 </Typography>
                 <Link href="/">
-                    <Button
-                        className={classes.spaceMan}
-                        variant="contained"
-                        color="primary"
-                    >
+                    <Button variant="contained" color="primary">
                         BACK TO HOME
                     </Button>
                 </Link>

@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import { cdn_url } from "../../utils/constants";
+import { cdn_url } from "utils/constants";
 
 const useStyles = makeStyles({
     cssecSection: {
@@ -62,6 +62,7 @@ const CSSEC = () => {
                         <Button
                             variant="contained"
                             color="secondary"
+                            size="large"
                             onClick={() => router.push("/help-desk")}
                         >
                             Help Desk
@@ -70,7 +71,7 @@ const CSSEC = () => {
                 </Grid>
                 <Grid item md={6} align="center">
                     <img
-                        src={`chammiesignrevised.png`}
+                        src={`${cdn_url}/chammie-chan/chammiesignrevised.png`}
                         width="65%"
                     />
                 </Grid>

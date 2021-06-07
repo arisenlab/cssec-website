@@ -1,18 +1,15 @@
 import React from "react";
 
 import dynamic from "next/dynamic";
-import google_calendar from "../utils/google";
+import google_calendar from "utils/google";
 
-const CSSEC = dynamic(() => import("../components/home/cssec"));
-const NewsEvents = dynamic(() => import("../components/home/news-events"));
-const Banner = dynamic(() => import("../components/home/banner"));
+const CSSEC = dynamic(() => import("components/home/cssec"));
+const NewsEvents = dynamic(() => import("components/home/news-events"));
+const Banner = dynamic(() => import("components/home/banner"));
 
 import WP from "utils/wordpress";
 
 const Home = ({ upperNews, users, dayEvents }) => {
-    const getAuthor = author_id => {
-        return users.find(user => user.id === author_id).name;
-    };
     return (
         <>
             <Banner />
@@ -38,12 +35,7 @@ export async function getStaticProps() {
                 timeMin: new Date(),
                 maxResults: 10,
             })
-        ).data
-            .items; /* 
-
-        const day_events = events.filter(event =>
-            isSameDay(new Date(event.start.dateTime), new Date())
-        ); */
+        ).data.items;
 
         return {
             props: { upperNews: posts, users: users, dayEvents: events },

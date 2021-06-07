@@ -32,12 +32,12 @@ const EventsListTwo = ({ day_events }) => {
     }, [events, currentTime]);
 
     return (
-        <Paper elevation={3}>
+        <>
             <Typography
                 variant="h5"
                 style={{ paddingTop: 10, paddingLeft: 10, paddingBottom: 10 }}
             >
-                <strong>Events on this day</strong>
+                <strong>Events</strong>
             </Typography>
 
             <div
@@ -51,36 +51,39 @@ const EventsListTwo = ({ day_events }) => {
                     {currentString}
                 </Typography>
                 {events.map(({ id, summary, start, end, description }) => (
-                    <Grid container spacing={2} key={id}>
+                    <Grid
+                        container
+                        spacing={2}
+                        key={id}
+                        style={{ marginTop: 10 }}
+                    >
                         <Grid item xs={3} align="center">
                             <Paper
                                 style={{
                                     backgroundColor: "#622A55",
                                     color: "#fff",
+                                    borderRadius: "200px",
                                 }}
                             >
-                                <div>
-                                    <Typography variant="h6">
-                                        {format(new Date(start.dateTime), "dd")}
-                                    </Typography>
-                                </div>
-                                <div>
-                                    <Typography variant="h6">
-                                        {format(
-                                            new Date(start.dateTime),
-                                            "MMM"
-                                        )}
-                                    </Typography>
-                                </div>
+                                <Typography variant="h6">
+                                    {format(new Date(start.dateTime), "dd")}
+                                </Typography>
+                                <Typography variant="h6">
+                                    {format(new Date(start.dateTime), "MMM")}
+                                </Typography>
                             </Paper>
                         </Grid>
                         <Grid item xs={9}>
                             <Typography variant="h5" gutterBottom>
                                 {summary}
                             </Typography>
-                            <Typography variant="body1" gutterBottom>
-                                {description}
-                            </Typography>
+                            <Typography
+                                variant="body1"
+                                gutterBottom
+                                dangerouslySetInnerHTML={{
+                                    __html: description,
+                                }}
+                            />
                             <Typography variant="subtitle2">
                                 <i>{`${format(
                                     new Date(start.dateTime),
@@ -94,7 +97,7 @@ const EventsListTwo = ({ day_events }) => {
                     </Grid>
                 ))}
             </div>
-        </Paper>
+        </>
     );
 };
 
