@@ -42,9 +42,9 @@ const EventCard = ({ summary, timeStart, timeEnd, location, description }) => {
                         }}
                     />
                 </Grid>
-                <Grid container item>
+                <Grid container spacing={1} item>
                     <Grid item xs={6}>
-                        <Typography variant="h6">
+                        <Typography variant="body1">
                             <b>{`Time: ${format(
                                 new Date(timeStart),
                                 "p"
@@ -52,7 +52,7 @@ const EventCard = ({ summary, timeStart, timeEnd, location, description }) => {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Typography variant="h6">
+                        <Typography variant="body1">
                             <b>{`Venue: ${location}`}</b>
                         </Typography>
                     </Grid>

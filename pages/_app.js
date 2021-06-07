@@ -5,21 +5,21 @@ import dynamic from "next/dynamic";
 import Router, { useRouter } from "next/router";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../components/theme";
+import theme from "components/theme";
 
 import NProgress from "nprogress";
 import { SnackbarProvider } from "notistack";
 
 import "react-image-gallery/styles/css/image-gallery.css";
 
-const Header = dynamic(() => import("../components/general/header"));
-const Footer = dynamic(() => import("../components/general/footer"));
-import Space from "../components/general/space";
+const Header = dynamic(() => import("components/general/header"));
+const Footer = dynamic(() => import("components/general/footer"));
+import Space from "components/general/space";
 
-import { frontend_url } from "../utils/constants";
-import * as gtag from "../utils/gtag";
+import { frontend_url } from "utils/constants";
+import * as gtag from "utils/gtag";
 
-import routes from "../navigation/routes";
+import routes from "navigation/routes";
 
 NProgress.configure({
     showSpinner: false,

@@ -13,7 +13,11 @@ const ContactList = ({ contacts }) => {
             </Grid>
             {contacts.map(c => (
                 <Grid item xs={12} key={c.id}>
-                    <ContactBadge name={c.acf.name} details={c.acf.details} />
+                    <ContactBadge
+                        logo={c.acf.logo}
+                        name={c.acf.name}
+                        details={c.acf.details}
+                    />
                 </Grid>
             ))}
         </Grid>

@@ -4,6 +4,10 @@ const Links = [
         href: "/",
     },
     {
+        page: "Highlights",
+        href: "/highlights",
+    },
+    {
         page: "ACCSS",
         href: "/accss",
     },
@@ -11,22 +15,27 @@ const Links = [
         page: "News",
         href: "/news",
     },
-
     {
         page: "Help Desk",
         href: "/help-desk",
-    },
-    {
-        page: "Archive",
-        href: "/archive",
     },
     {
         page: "Calendar",
         href: "/calendar",
     },
     {
-        page: "Committees",
-        href: "/committees",
+        page: "Learn More",
+        href: "/learn-more",
+        submenu: [
+            {
+                page: "Committees",
+                href: "/learn-more/committees",
+            },
+            {
+                page: "Archives",
+                href: "/learn-more/archives",
+            },
+        ],
     },
 ];
 

@@ -4,8 +4,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -15,48 +15,57 @@ const useStyles = makeStyles(theme => ({
         backgroundSize: "auto",
         height: "65vh",
     },
-    chamWarning:{
+    chamWarning: {
         backgroundImage: "url(under_maintenance.png)",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundSize:"100% 100%",
-        width:"40vh",
+        backgroundSize: "100% 100%",
+        width: "40vh",
         height: "40vh",
     },
-    textColor:{
-        color:"#531444",
+    textColor: {
+        color: "#531444",
         textShadow: "2px 2px 2px #000000",
     },
-    spaceMan:{
-        margin:"10px"
-    }
+    spaceMan: {
+        margin: "10px",
+    },
 }));
 
 const Maintenance = () => {
     const classes = useStyles();
-    
-    return (<div className={classes.root}>
+
+    return (
+        <div className={classes.root}>
             <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
             >
                 <div className={classes.chamWarning}></div>
-                <Typography className={classes.textColor} variant="h2" >
+                <Typography className={classes.textColor} variant="h2">
                     This page is under construction
                 </Typography>
-                <Typography className={classes.textColor} variant="h6   " gutterBottom>
+                <Typography
+                    className={classes.textColor}
+                    variant="h6"
+                    gutterBottom
+                >
                     Please bear with us as we continue to improve this website.
                 </Typography>
                 <Link href="/">
-                    <Button className={classes.spaceMan} variant="contained" color="primary">
+                    <Button
+                        className={classes.spaceMan}
+                        variant="contained"
+                        color="primary"
+                    >
                         BACK TO HOME
                     </Button>
                 </Link>
             </Grid>
-
-    </div>);
+        </div>
+    );
 };
 
 export default Maintenance;

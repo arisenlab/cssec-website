@@ -6,16 +6,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-import Space from "../../components/general/space";
-import SectionHeader from "../../components/general/section-header";
+import Space from "components/general/space";
+import SectionHeader from "components/general/section-header";
 
-const NewsCard = dynamic(() => import("../../components/news/news-card"));
-const NewsWideCard = dynamic(() =>
-    import("../../components/news/news-wide-card")
-);
+const NewsCard = dynamic(() => import("components/news/news-card"));
+const NewsWideCard = dynamic(() => import("components/news/news-wide-card"));
 
-import { cdn_url } from "../../utils/constants";
-import WP from "../../utils/wordpress";
+import { cdn_url } from "utils/constants";
+import WP from "utils/wordpress";
 
 const useStyles = makeStyles({
     upperRoot: {

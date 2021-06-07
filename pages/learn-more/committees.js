@@ -7,10 +7,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const CommitteeCard = dynamic(() =>
-    import("../components/committee/committee_card")
+    import("components/committee/committee_card")
 );
 
-import WP from "../utils/wordpress";
+import WP from "utils/wordpress";
 
 const useStyles = makeStyles(theme => ({
     root: {

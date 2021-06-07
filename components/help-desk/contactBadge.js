@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Paper, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -14,13 +15,18 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const ContactBadge = ({ name, details }) => {
+const ContactBadge = ({ logo, name, details }) => {
     const classes = useStyles();
     return (
         <Paper className={classes.paper} elevation={3}>
             <Grid container alignItems="center" className={classes.root}>
                 <Grid item xs={3} align="center">
-                    Img
+                    <Image
+                        src={logo}
+                        alt={`${name} - image`}
+                        width={75}
+                        height={75}
+                    />
                 </Grid>
                 <Grid item xs={9}>
                     <Typography>

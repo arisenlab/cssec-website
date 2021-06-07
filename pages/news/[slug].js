@@ -13,11 +13,11 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import Space from "../../components/general/space";
+import Space from "components/general/space";
 
-import { frontend_url, cdn_url } from "../../utils/constants";
+import { frontend_url, cdn_url } from "utils/constants";
 
-import WP from "../../utils/wordpress";
+import WP from "utils/wordpress";
 import WPGBlocks from "react-gutenberg";
 
 const useStyles = makeStyles(theme => ({

@@ -4,7 +4,7 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 
-import { cdn_url, backend_url } from "../utils/constants";
+import { cdn_url, backend_url } from "utils/constants";
 
 export default class MyDocument extends Document {
     render() {
