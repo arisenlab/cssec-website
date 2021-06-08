@@ -2,6 +2,7 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
 const useStyles = makeStyles(theme => ({
     marginAutoContainer: {
@@ -22,24 +23,28 @@ const CommitteeCard = ({ imgSrc, title, description }) => {
     const classes = useStyles();
     return (
         <div style={{ margin: 30 }}>
-            <div className={classes.marginAutoContainer}>
-                <img
-                    className={classes.marginAutoItem}
-                    src={imgSrc}
-                    width="80%"
-                />
-            </div>
-            <Paper style={{ marginTop: 10 }}>
-                <Typography variant="h4" align="center">
-                    {title}
-                </Typography>
-                <Typography
-                    className={classes.marginDescription}
-                    variant="subtitle1"
-                >
-                    {description}
-                </Typography>
-            </Paper>
+            <Flippy>
+                <FrontSide>
+                    <div className={classes.marginAutoContainer}>
+                        <img
+                            className={classes.marginAutoItem}
+                            src={imgSrc}
+                            width="80%"
+                        />
+                    </div>
+                    <Typography variant="h4" align="center">
+                        {title}
+                     </Typography>
+                </FrontSide>
+                <BackSide>
+                    <Typography
+                        className={classes.marginDescription}
+                        variant="subtitle1"
+                    >
+                        {description}
+                    </Typography>
+                </BackSide>
+            </Flippy>
         </div>
     );
 };
