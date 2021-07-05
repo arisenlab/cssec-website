@@ -11,6 +11,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const EventCard = dynamic(() => import("components/events/event-card"));
 
+import Layout from "components/general/layout";
 import Space from "components/general/space";
 
 import days from "data/days_data";
@@ -20,11 +21,7 @@ import { cdn_url } from "utils/constants";
 
 import { isSameDay } from "date-fns";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: "95%",
-        margin: "auto",
-    },
+const useStyles = makeStyles(() => ({
     arrowIcon: {
         display: "flex",
         alignItems: "center",
@@ -67,7 +64,7 @@ const Events = ({
     const [dayDate, setDayDate] = React.useState(days[0].str_date);
 
     return (
-        <div className={classes.root}>
+        <Layout width="95%">
             <Space />
             <ButtonBase
                 disableRipple
@@ -154,7 +151,7 @@ const Events = ({
                     </Grid>
                 </Grid>
             </Grid>
-        </div>
+        </Layout>
     );
 };
 

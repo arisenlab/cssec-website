@@ -7,10 +7,10 @@ const Links = [
         page: "Highlights",
         href: "/highlights",
     },
-    {
+    /* {
         page: "ACCSS",
         href: "/accss",
-    },
+    }, */
     {
         page: "News",
         href: "/news",

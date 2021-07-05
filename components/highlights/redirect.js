@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Redirect = ({ imgSrc, title, icon, titleIcon, href }) => {
+const Redirect = ({ icon, titleIcon, href }) => {
     const classes = useStyles();
     const router = useRouter();
 

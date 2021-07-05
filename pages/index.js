@@ -24,7 +24,7 @@ export async function getStaticProps() {
     try {
         let [posts, users] = await Promise.all([
             WP.posts().categories(2).perPage(3).order("desc").orderby("date"),
-            WP.users(),
+            WP.users().perPage(100),
         ]);
 
         const events = (

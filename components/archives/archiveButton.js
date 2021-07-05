@@ -1,12 +1,10 @@
 import { ButtonBase, Paper, Typography, Grid } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import ComputerIcon from "@material-ui/icons/Computer";
 
 import Space from "components/general/space";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     paper: {
-        "&: hover": {},
         backgroundColor: "#FFD8F6",
         padding: 30,
     },
@@ -15,14 +13,10 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 100,
         backgroundColor: "#fff",
     },
-    content: {
-        display: "flex",
-    },
 }));
 
 const ArchiveButton = props => {
     const { name, icon, onClick, disabled } = props;
-    console.log(props);
     const classes = useStyles();
     return (
         <ButtonBase onClick={onClick} disabled={disabled}>

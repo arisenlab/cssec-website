@@ -1,4 +1,5 @@
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import MuiPaper from "@material-ui/core/Paper";
 import { red } from "@material-ui/core/colors";
 
 // Create a theme instance.
@@ -52,6 +53,7 @@ const theme = createMuiTheme({
         },
         subtitle2: {
             fontFamily: "Open Sans",
+            fontWeight: 200,
         },
         body1: {
             fontFamily: "Open Sans",

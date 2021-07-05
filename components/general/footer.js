@@ -53,7 +53,6 @@ const Footer = () => {
     const classes = useStyles();
     return (
         <>
-            <Space />
             <Grid
                 container
                 spacing={3}

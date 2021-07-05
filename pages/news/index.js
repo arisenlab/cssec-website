@@ -14,18 +14,9 @@ const NewsWideCard = dynamic(() => import("components/news/news-wide-card"));
 
 import { cdn_url } from "utils/constants";
 import WP from "utils/wordpress";
+import Layout from "components/general/layout";
 
 const useStyles = makeStyles({
-    upperRoot: {
-        width: "85%",
-        margin: "auto",
-    },
-    seeMore: {
-        width: "85%",
-        margin: "auto",
-        display: "flex",
-        justifyContent: "center",
-    },
     progressContent: {
         height: "80vh",
         width: "100%",
@@ -36,7 +27,7 @@ const News = ({ upperNews, lowerNews, users }) => {
     const classes = useStyles();
 
     const getAuthor = author_id => {
-        return users.find(user => user.id === author_id).name;
+        return users.find(user => user.id === author_id);
     };
 
     return (
@@ -44,19 +35,24 @@ const News = ({ upperNews, lowerNews, users }) => {
             {upperNews.length > 0 ? (
                 <>
                     <Space />
-                    <SectionHeader text="New Top 3 Posts" />
-                    <Grid container spacing={2} className={classes.upperRoot}>
-                        {upperNews.map(news => {
-                            return (
-                                <Grid item xs={12} md={4} key={news.id}>
-                                    <NewsCard
-                                        post={news}
-                                        author={getAuthor(news.author)}
-                                    />
-                                </Grid>
-                            );
-                        })}
-                    </Grid>
+                    <Layout width="85%">
+                        <SectionHeader text="New Top 3 Posts" />
+
+                        <Grid container spacing={2}>
+                            {upperNews.map(news => {
+                                return (
+                                    <Grid item xs={12} key={news.id}>
+                                        <Grid item xs={12} md={4} key={news.id}>
+                                            <NewsCard
+                                                post={news}
+                                                author={getAuthor(news.author)}
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </Layout>
                 </>
             ) : (
                 <Grid
@@ -86,19 +82,22 @@ const News = ({ upperNews, lowerNews, users }) => {
             ) : null}
 
             {lowerNews.length > 0 ? (
-                <Grid container spacing={1} className={classes.upperRoot}>
-                    {lowerNews.map(news => {
-                        return (
-                            <Grid item xs={12} key={news.id}>
-                                <NewsWideCard
-                                    post={news}
-                                    author={getAuthor(news.author)}
-                                />
-                            </Grid>
-                        );
-                    })}
-                </Grid>
+                <Layout width="85%">
+                    <Grid container spacing={1}>
+                        {lowerNews.map(news => {
+                            return (
+                                <Grid item xs={12} key={news.id}>
+                                    <NewsWideCard
+                                        post={news}
+                                        author={getAuthor(news.author)}
+                                    />
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
+                </Layout>
             ) : null}
+            <Space />
         </>
     );
 };
@@ -107,7 +106,7 @@ export async function getStaticProps() {
     try {
         let [posts, users] = await Promise.all([
             WP.posts().categories(2).perPage(100).order("desc").orderby("date"),
-            WP.users(),
+            WP.users().perPage(100),
         ]);
 
         let upperNews = posts.slice(0, 3);

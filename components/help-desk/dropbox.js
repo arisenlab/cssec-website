@@ -57,7 +57,6 @@ const Dropbox = ({ user_name, user_email }) => {
     const [openPrivacyPolicy, setOpenPrivacyPolicy] = React.useState(false);
 
     firebase.auth().onAuthStateChanged(user => {
-        //console.log("Damn");
         let dc = () => {};
         if (user) {
             // User is signed in.
@@ -335,7 +334,7 @@ const Dropbox = ({ user_name, user_email }) => {
                         color="primary"
                         fullWidth
                     >
-                        Drop it low low!
+                        Drop it
                     </Button>
                 </FormGroup>
             </form>

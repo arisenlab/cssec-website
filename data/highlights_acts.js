@@ -1,5 +1,5 @@
 const ItWeekActs = [
-    {
+    /* {
         title: "Calendar of Events",
         href: "/highlights/events",
         icon: (
@@ -31,16 +31,16 @@ const ItWeekActs = [
                 <path
                     d="M226.082 12L243.859 12"
                     stroke="#5D2252"
-                    stroke-width="5"
+                    strokeWidth="5"
                 />
                 <path
                     d="M21.6523 12H57.2054"
                     stroke="#5D2252"
-                    stroke-width="5"
+                    strokeWidth="5"
                 />
                 <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M11.8729 22.1951C17.9258 22.1951 22.8326 17.2266 22.8326 11.0976C22.8326 4.96855 17.9258 0 11.8729 0C5.81995 0 0.913086 4.96855 0.913086 11.0976C0.913086 17.2266 5.81995 22.1951 11.8729 22.1951ZM11.8729 19.0244C16.1964 19.0244 19.7013 15.4755 19.7013 11.0976C19.7013 6.71974 16.1964 3.17078 11.8729 3.17078C7.5494 3.17078 4.0445 6.71974 4.0445 11.0976C4.0445 15.4755 7.5494 19.0244 11.8729 19.0244Z"
                     fill="#5D2252"
                 />
@@ -50,7 +50,7 @@ const ItWeekActs = [
                 />
             </svg>
         ),
-    },
+    }, */
     {
         title: "E-Kit",
         href: "/highlights/esports",
@@ -79,16 +79,16 @@ const ItWeekActs = [
                 <path
                     d="M217.194 12L243.859 12"
                     stroke="#5D2252"
-                    stroke-width="5"
+                    strokeWidth="5"
                 />
                 <path
                     d="M21.6524 12H161.889"
                     stroke="#5D2252"
-                    stroke-width="5"
+                    strokeWidth="5"
                 />
                 <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M11.8729 22.1951C17.9258 22.1951 22.8326 17.2266 22.8326 11.0976C22.8326 4.96855 17.9258 0 11.8729 0C5.81995 0 0.913086 4.96855 0.913086 11.0976C0.913086 17.2266 5.81995 22.1951 11.8729 22.1951ZM11.8729 19.0244C16.1964 19.0244 19.7013 15.4755 19.7013 11.0976C19.7013 6.71974 16.1964 3.17078 11.8729 3.17078C7.5494 3.17078 4.0445 6.71974 4.0445 11.0976C4.0445 15.4755 7.5494 19.0244 11.8729 19.0244Z"
                     fill="#5D2252"
                 />

@@ -6,9 +6,11 @@ import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+import Layout from "components/general/layout";
+
 const Accordion = withStyles({
     root: {
-        border: "1px solid rgba(0, 0, 0, .125)",
+        border: "1px solid #fff",
         boxShadow: "none",
         "&:not(:last-child)": {
             borderBottom: 0,
@@ -25,8 +27,9 @@ const Accordion = withStyles({
 
 const AccordionSummary = withStyles({
     root: {
-        backgroundColor: "rgba(0, 0, 0, .03)",
-        borderBottom: "1px solid rgba(0, 0, 0, .125)",
+        backgroundColor: "#805376",
+        borderBottom: "1px solid #fff",
+        color: "#fff",
         marginBottom: -1,
         minHeight: 56,
         "&$expanded": {
@@ -44,31 +47,19 @@ const AccordionSummary = withStyles({
 const AccordionDetails = withStyles(theme => ({
     root: {
         padding: theme.spacing(2),
-    },
-}))(MuiAccordionDetails);
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: "90%",
-        [theme.breakpoints.down("md")]: {
-            width: "100%",
-        },
-    },
-    heading: {
-        fontSize: theme.typography.pxToRem(15),
-        flexBasis: "60%",
-        flexShrink: 0,
-    },
-    accordionHeader: {
-        backgroundColor: "#805376",
-        color: "#fff",
-    },
-    accordionDetails: {
         backgroundColor: "#F5DCDC",
         overflowWrap: "break-word",
         wordWrap: "break-word",
         msWordBreak: "break-word",
         wordBreak: "break-word",
+    },
+}))(MuiAccordionDetails);
+
+const useStyles = makeStyles(theme => ({
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        flexBasis: "60%",
+        flexShrink: 0,
     },
 }));
 
@@ -82,7 +73,7 @@ const Faqs = ({ faqs }) => {
 
     return (
         <>
-            <div className={classes.root}>
+            <Layout width="95%" hasMobile={true}>
                 {faqs.map(faq => (
                     <Accordion
                         expanded={expanded === `panel${faq.id}`}
@@ -95,19 +86,17 @@ const Faqs = ({ faqs }) => {
                             }
                             aria-controls={`panel${faq.id}bh-content`}
                             id={`panel${faq.id}bh-header`}
-                            className={classes.accordionHeader}
                         >
                             <Typography className={classes.heading}>
                                 {faq.acf.faq}
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails
-                            className={classes.accordionDetails}
                             dangerouslySetInnerHTML={{ __html: faq.acf.answer }}
                         />
                     </Accordion>
                 ))}
-            </div>
+            </Layout>
         </>
     );
 };

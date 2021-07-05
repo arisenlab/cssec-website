@@ -2,12 +2,24 @@ import React from "react";
 
 import { useRouter } from "next/router";
 
+import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import MaterialButton from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 import { format } from "date-fns";
+
+const CardButton = withStyles(theme => ({
+    root: {
+        backgroundColor: theme.palette.primary.main,
+        color: "#fff",
+        borderRadius: 20,
+        "&:hover": {
+            backgroundColor: "#56244A",
+        },
+    },
+}))(MaterialButton);
 
 const NewsWideCard = ({ post, author }) => {
     const router = useRouter();
@@ -28,26 +40,33 @@ const NewsWideCard = ({ post, author }) => {
 
     return (
         <Paper>
-            <Grid container alignItems="center" style={{ padding: 10 }}>
+            <Grid
+                container
+                justify="space-around"
+                alignItems="center"
+                style={{ padding: 10 }}
+            >
                 <Grid item xs={12} md={4}>
                     <img
                         src={
                             post.jetpack_featured_media_url !== ""
                                 ? post.jetpack_featured_media_url
-                                : "/logos/temp.jpg"
+                                : "img/default_post_image.jpg"
                         }
                         width="100%"
+                        style={{ borderRadius: 5 }}
                     />
                 </Grid>
                 <Grid item xs={12} md={8} style={{ padding: 10 }}>
                     <Typography
                         variant="h4"
                         component="h2"
+                        style={{ color: "#5D2252" }}
                         dangerouslySetInnerHTML={{ __html: renderedTitle }}
                     />
                     <Typography color="textSecondary">
                         {author
-                            ? `${author} on ${format(
+                            ? `${author.name} on ${format(
                                   new Date(post.date),
                                   "MMM dd yyyy p"
                               )}`
@@ -59,7 +78,9 @@ const NewsWideCard = ({ post, author }) => {
                     <Typography
                         variant="body1"
                         component="p"
-                        dangerouslySetInnerHTML={{ __html: renderedExcerpt }}
+                        dangerouslySetInnerHTML={{
+                            __html: renderedExcerpt.substring(0, 250) + "...",
+                        }}
                     />
                     <div
                         style={{
@@ -67,13 +88,13 @@ const NewsWideCard = ({ post, author }) => {
                             flexDirection: "row-reverse",
                         }}
                     >
-                        <Button
+                        <CardButton
                             variant="contained"
                             color="primary"
                             onClick={() => router.push(`/news/${post.slug}`)}
                         >
                             <Typography>Read More</Typography>
-                        </Button>
+                        </CardButton>
                     </div>
                 </Grid>
             </Grid>

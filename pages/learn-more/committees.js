@@ -4,23 +4,15 @@ import dynamic from "next/dynamic";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 
+import Layout from "components/general/layout";
 const CommitteeCard = dynamic(() =>
     import("components/committee/committee_card")
 );
 
 import WP from "utils/wordpress";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: "90%",
-        margin: "auto",
-    },
-}));
-
 const Committees = ({ committees }) => {
-    const classes = useStyles();
     let output;
 
     if (committees != []) {
@@ -50,11 +42,11 @@ const Committees = ({ committees }) => {
     }
 
     return (
-        <div className={classes.root}>
+        <Layout width="90%">
             <Grid container spacing={2} style={{ marginTop: 10 }}>
                 {output}
             </Grid>
-        </div>
+        </Layout>
     );
 };
 

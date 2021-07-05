@@ -10,7 +10,10 @@ import Grid from "@material-ui/core/Grid";
 
 import ImageGallery from "react-image-gallery";
 
+import Layout from "components/general/layout";
+
 import { media_url } from "../../utils/constants";
+import SVGButton from "./svgButton";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -42,17 +45,16 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
-        width: "85%",
-        margin: "auto",
-    },
     tab: { backgroundColor: "#622A55" },
     tab1: {
         [theme.breakpoints.down("md")]: {
             maxWidth: "100%",
             width: "100%",
+        },
+    },
+    customImageLinks: {
+        "&:hover": {
+            color: "#622A55",
         },
     },
 }));
@@ -85,7 +87,7 @@ const Activities = ({ activities }) => {
     };
 
     return (
-        <div className={classes.root}>
+        <Layout width="85%">
             <Typography variant="h4">Activities handled by ACCSS</Typography>
             <AppBar position="static" className={classes.tab}>
                 <Tabs
@@ -109,6 +111,7 @@ const Activities = ({ activities }) => {
                     })}
                 </Tabs>
             </AppBar>
+
             {activities.map(activity => {
                 return (
                     <TabPanel
@@ -130,6 +133,7 @@ const Activities = ({ activities }) => {
                                     <>
                                         <ImageGallery
                                             lazyload
+                                            showThumbnails={false}
                                             items={getImages(
                                                 activity.acf.pictures_file_name,
                                                 activity.acf.number_of_pics,
@@ -138,6 +142,64 @@ const Activities = ({ activities }) => {
                                                 original: picture,
                                                 thumbnail: picture,
                                             }))}
+                                            renderLeftNav={(
+                                                onClick,
+                                                disabled
+                                            ) => (
+                                                <SVGButton
+                                                    onClick={onClick}
+                                                    disabled={disabled}
+                                                    purpose="left"
+                                                    classText="image-gallery-left-nav"
+                                                />
+                                            )}
+                                            renderRightNav={(
+                                                onClick,
+                                                disabled
+                                            ) => (
+                                                <SVGButton
+                                                    onClick={onClick}
+                                                    disabled={disabled}
+                                                    purpose="right"
+                                                    classText="image-gallery-right-nav"
+                                                />
+                                            )}
+                                            renderPlayPauseButton={(
+                                                onClick,
+                                                isPlaying
+                                            ) => (
+                                                <SVGButton
+                                                    onClick={onClick}
+                                                    purpose={
+                                                        !isPlaying
+                                                            ? "play"
+                                                            : "pause"
+                                                    }
+                                                    classText={`image-gallery-play-button${
+                                                        isPlaying
+                                                            ? " active"
+                                                            : ""
+                                                    }`}
+                                                />
+                                            )}
+                                            renderFullscreenButton={(
+                                                onClick,
+                                                isFullscreen
+                                            ) => (
+                                                <SVGButton
+                                                    onClick={onClick}
+                                                    purpose={
+                                                        !isFullscreen
+                                                            ? "maximize"
+                                                            : "minimize"
+                                                    }
+                                                    classText={`image-gallery-fullscreen-button${
+                                                        isFullscreen
+                                                            ? " active"
+                                                            : ""
+                                                    }`}
+                                                />
+                                            )}
                                         />
                                     </>
                                 ) : (
@@ -148,7 +210,7 @@ const Activities = ({ activities }) => {
                     </TabPanel>
                 );
             })}
-        </div>
+        </Layout>
     );
 };
 

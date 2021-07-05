@@ -4,16 +4,26 @@ import { useRouter } from "next/router";
 
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
+import MaterialButton from "@material-ui/core/Button";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import { cdn_url } from "utils/constants";
+
+const CSSECButton = withStyles(theme => ({
+    root: {
+        backgroundColor: "#fff",
+        color: "#000",
+        "&:hover": {
+            backgroundColor: "#F8F8F8",
+        },
+    },
+}))(MaterialButton);
 
 const useStyles = makeStyles({
     cssecSection: {
         width: "100%",
-        backgroundColor: "#e0e0e0",
+        backgroundColor: "#F1F1F1",
         padding: 20,
     },
     cssecSectionContent: {
@@ -37,7 +47,7 @@ const CSSEC = () => {
             >
                 <Grid item md={6} align="center" align="left">
                     <Typography variant="h3" gutterBottom>
-                        Join the Computer Studies Student Executive Council!
+                        Computer Studies Student Executive Council
                     </Typography>
                     <Typography variant="body1" align="justify">
                         The Computer Studies Student Executive Council (CSSEC)
@@ -59,19 +69,18 @@ const CSSEC = () => {
                             marginTop: 10,
                         }}
                     >
-                        <Button
+                        <CSSECButton
                             variant="contained"
-                            color="secondary"
                             size="large"
                             onClick={() => router.push("/help-desk")}
                         >
                             Help Desk
-                        </Button>
+                        </CSSECButton>
                     </div>
                 </Grid>
                 <Grid item md={6} align="center">
                     <img
-                        src={`${cdn_url}/chammie-chan/chammiesignrevised.png`}
+                        src={`${cdn_url}/chammie-chan/pilot-mecha-chammie-chan.png`}
                         width="65%"
                     />
                 </Grid>

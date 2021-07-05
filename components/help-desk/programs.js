@@ -1,10 +1,10 @@
 import React from "react";
-import { Typography, Paper, Grid, Button } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import SectionHeader from "components/general/section-header";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     button: {
         width: "100%",
         backgroundColor: "#a17f99",

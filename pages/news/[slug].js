@@ -19,12 +19,9 @@ import { frontend_url, cdn_url } from "utils/constants";
 
 import WP from "utils/wordpress";
 import WPGBlocks from "react-gutenberg";
+import Layout from "components/general/layout";
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        width: "90%",
-        margin: "auto",
-    },
     centeredAndCropped: {
         objectFit: "cover",
         width: "100%",
@@ -38,13 +35,13 @@ const Slug = ({ post, author, recent }) => {
 
     if (router.isFallback) {
         return (
-            <div className={classes.root}>
+            <Layout width="85%">
                 <Grid container direction="row" justify="center">
                     <CircularProgress
                         style={{ marginTop: 100, marginBottom: 100 }}
                     />
                 </Grid>
-            </div>
+            </Layout>
         );
     }
 
@@ -60,7 +57,7 @@ const Slug = ({ post, author, recent }) => {
     }
 
     return (
-        <div className={classes.root}>
+        <Layout width="80%">
             <Head>
                 <title>{post.title.rendered} - CSSEC Posts</title>
                 <meta
@@ -106,14 +103,15 @@ const Slug = ({ post, author, recent }) => {
             <Grid container spacing={2}>
                 <Grid item md={8}>
                     <Grid container>
-                        <Grid item xs={12}>
-                            {post.jetpack_featured_media_url ? (
+                        {post.jetpack_featured_media_url ? (
+                            <Grid item xs={12}>
                                 <img
                                     src={post.jetpack_featured_media_url}
                                     className={classes.centeredAndCropped}
                                 />
-                            ) : null}
-                        </Grid>
+                            </Grid>
+                        ) : null}
+
                         <Grid item xs={12}>
                             <Typography
                                 variant="h3"
@@ -139,32 +137,36 @@ const Slug = ({ post, author, recent }) => {
                 </Grid>
                 <Grid item md={4} style={{ minWidth: "300px" }}>
                     <Paper variant="outlined" style={{ padding: 20 }}>
-                        <Typography variant="h6" component="h4">
+                        <Typography variant="h4" component="h4">
                             Recent News
                         </Typography>
                         <List style={{ width: "100%" }}>
-                            {recent.map(rec => (
-                                <ListItem
-                                    key={rec.id}
-                                    button
-                                    onClick={() =>
-                                        router.push(`/news/${rec.slug}`)
-                                    }
-                                >
-                                    <ListItemText
-                                        primary={rec.title.rendered}
-                                        secondary={new Date(
-                                            rec.date
-                                        ).toDateString()}
-                                    />
-                                </ListItem>
-                            ))}
+                            {recent.length > 0 ? (
+                                recent.map(rec => (
+                                    <ListItem
+                                        key={rec.id}
+                                        button
+                                        onClick={() =>
+                                            router.push(`/news/${rec.slug}`)
+                                        }
+                                    >
+                                        <ListItemText
+                                            primary={rec.title.rendered}
+                                            secondary={new Date(
+                                                rec.date
+                                            ).toDateString()}
+                                        />
+                                    </ListItem>
+                                ))
+                            ) : (
+                                <Typography>No recent news</Typography>
+                            )}
                         </List>
                     </Paper>
                 </Grid>
             </Grid>
             <Space />
-        </div>
+        </Layout>
     );
 };
 

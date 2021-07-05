@@ -1,10 +1,15 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Flippy, { FrontSide, BackSide } from 'react-flippy';
+import Flippy, { FrontSide, BackSide } from "react-flippy";
 
 const useStyles = makeStyles(theme => ({
+    cardContainer: {
+        margin: 30,
+        "&:hover": {
+            cursor: "pointer",
+        },
+    },
     marginAutoContainer: {
         width: 100 + "%",
         height: 100 + "%",
@@ -22,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 const CommitteeCard = ({ imgSrc, title, description }) => {
     const classes = useStyles();
     return (
-        <div style={{ margin: 30 }}>
+        <div className={classes.cardContainer}>
             <Flippy>
                 <FrontSide>
                     <div className={classes.marginAutoContainer}>
@@ -34,7 +39,7 @@ const CommitteeCard = ({ imgSrc, title, description }) => {
                     </div>
                     <Typography variant="h4" align="center">
                         {title}
-                     </Typography>
+                    </Typography>
                 </FrontSide>
                 <BackSide>
                     <Typography

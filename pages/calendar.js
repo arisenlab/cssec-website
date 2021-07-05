@@ -7,7 +7,10 @@ import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
+import Layout from "components/general/layout";
 import Space from "components/general/space";
+
+import monthNames from "data/monthNames";
 
 const TimelineItem1 = dynamic(() =>
     import("components/calendar/timeline").then(func => func.TimelineItem1)
@@ -50,6 +53,10 @@ const useStyles = makeStyles(theme => ({
     secondaryTail: {
         backgroundColor: theme.palette.secondary.main,
     },
+    divider: {
+        height: 3,
+        backgroundColor: "#622a55",
+    },
 }));
 
 const Calendar = ({ events: cssec_events, events2: cssec_events2 }) => {
@@ -57,21 +64,6 @@ const Calendar = ({ events: cssec_events, events2: cssec_events2 }) => {
 
     const [events, setEvents] = React.useState([]);
     const [events2, setEvents2] = React.useState([]);
-
-    const monthNames = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
 
     const noEventsBanner = (
         <Paper elevation={3} className={classes.paper}>
@@ -90,136 +82,114 @@ const Calendar = ({ events: cssec_events, events2: cssec_events2 }) => {
 
     React.useEffect(() => {
         setEvents(cssec_events);
+        setEvents2(cssec_events2);
     }, []);
 
     return (
-        <>
+        <Layout width="80%" hasMobile={true}>
             <Space />
-
-            <div className={classes.root}>
-                <Paper className={classes.paper} align="center">
-                    <Typography variant="h3" color="primary">
-                        Timeline of Events
-                    </Typography>
-                </Paper>
-                <Timeline>
-                    {/* This month */}
-                    <TimelineItem1 date="Month" align="center">
-                        <Paper
-                            elevation={3}
-                            className={`${classes.paper} ${classes.monthPaper}`}
+            <Paper className={classes.paper} align="center">
+                <Typography variant="h3" color="primary">
+                    Timeline of Events
+                </Typography>
+            </Paper>
+            <Timeline>
+                {/* This month */}
+                <TimelineItem1 date="Month" align="center">
+                    <Paper
+                        elevation={3}
+                        className={`${classes.paper} ${classes.monthPaper}`}
+                    >
+                        <Typography variant="h5" component="h1" align="center">
+                            {monthNames[getMonth(new Date())]}
+                        </Typography>
+                    </Paper>
+                </TimelineItem1>
+                {events.length > 0 ? (
+                    events.map(event => (
+                        <TimelineItem1
+                            date={`${format(
+                                new Date(event.start.dateTime),
+                                "MMM dd, yyyy"
+                            )} ${format(
+                                new Date(event.start.dateTime),
+                                "p"
+                            )} - ${format(new Date(event.end.dateTime), "p")}`}
+                            key={event.id}
                         >
-                            <Typography
-                                variant="h5"
-                                component="h1"
-                                align="center"
-                            >
-                                {monthNames[getMonth(new Date())]}
-                            </Typography>
-                        </Paper>
-                    </TimelineItem1>
-                    {events.length > 0 ? (
-                        events.map(event => (
-                            <TimelineItem1
-                                date={`${format(
-                                    new Date(event.start.dateTime),
-                                    "MMM dd, yyyy"
-                                )} ${format(
-                                    new Date(event.start.dateTime),
-                                    "p"
-                                )} - ${format(
-                                    new Date(event.end.dateTime),
-                                    "p"
-                                )}`}
-                                key={event.id}
-                            >
-                                <Paper elevation={3} className={classes.paper}>
-                                    <Typography variant="h5" component="h1">
-                                        {event.summary}
-                                    </Typography>
-                                    {event.description ? (
-                                        <>
-                                            <Divider
-                                                variant="fullWidth"
-                                                style={{
-                                                    height: 3,
-                                                    backgroundColor: "#622a55",
-                                                }}
-                                            />
-                                            <Typography
-                                                variant="body2"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: event.description,
-                                                }}
-                                            />
-                                        </>
-                                    ) : null}
-                                </Paper>
-                            </TimelineItem1>
-                        ))
-                    ) : (
-                        <TimelineItem1>{noEventsBanner}</TimelineItem1>
-                    )}
-                    {/* Next month */}
-                    <TimelineItem2 date="Month" rightAlign="right">
-                        <Paper
-                            elevation={3}
-                            className={`${classes.paper} ${classes.monthPaper}`}
+                            <Paper elevation={3} className={classes.paper}>
+                                <Typography variant="h5" component="h1">
+                                    {event.summary}
+                                </Typography>
+                                {event.description ? (
+                                    <>
+                                        <Divider
+                                            variant="fullWidth"
+                                            className={classes.divider}
+                                        />
+                                        <Typography
+                                            variant="body2"
+                                            dangerouslySetInnerHTML={{
+                                                __html: event.description,
+                                            }}
+                                        />
+                                    </>
+                                ) : null}
+                            </Paper>
+                        </TimelineItem1>
+                    ))
+                ) : (
+                    <TimelineItem1>{noEventsBanner}</TimelineItem1>
+                )}
+                {/* Next month */}
+                <TimelineItem2 date="Month" rightAlign="right">
+                    <Paper
+                        elevation={3}
+                        className={`${classes.paper} ${classes.monthPaper}`}
+                    >
+                        <Typography variant="h5" component="h1" align="center">
+                            {monthNames[getMonth(new Date()) + 1]}
+                        </Typography>
+                    </Paper>
+                </TimelineItem2>
+                {events2.length > 0 ? (
+                    events2.map(event => (
+                        <TimelineItem2
+                            date={`${format(
+                                new Date(event.start.dateTime),
+                                "MMM dd, yyyy"
+                            )} ${format(
+                                new Date(event.start.dateTime),
+                                "p"
+                            )} - ${format(new Date(event.end.dateTime), "p")}`}
+                            key={event.id}
                         >
-                            <Typography
-                                variant="h5"
-                                component="h1"
-                                align="center"
-                            >
-                                {monthNames[getMonth(new Date()) + 1]}
-                            </Typography>
-                        </Paper>
-                    </TimelineItem2>
-                    {events2.length > 0 ? (
-                        events2.map(event => (
-                            <TimelineItem2
-                                date={`${format(
-                                    new Date(event.start.dateTime),
-                                    "MMM dd, yyyy"
-                                )} ${format(
-                                    new Date(event.start.dateTime),
-                                    "p"
-                                )} - ${format(
-                                    new Date(event.end.dateTime),
-                                    "p"
-                                )}`}
-                                key={event.id}
-                            >
-                                <Paper elevation={3} className={classes.paper}>
-                                    <Typography variant="h5" component="h1">
-                                        {event.summary}
-                                    </Typography>
-                                    {event.description ? (
-                                        <>
-                                            <Divider
-                                                variant="fullWidth"
-                                                style={{
-                                                    height: 3,
-                                                    backgroundColor: "#622a55",
-                                                }}
-                                            />
-                                            <Typography
-                                                variant="body2"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: event.description,
-                                                }}
-                                            />
-                                        </>
-                                    ) : null}
-                                </Paper>
-                            </TimelineItem2>
-                        ))
-                    ) : (
-                        <TimelineItem2>{noEventsBanner}</TimelineItem2>
-                    )}
-                </Timeline>
-            </div>
-        </>
+                            <Paper elevation={3} className={classes.paper}>
+                                <Typography variant="h5" component="h1">
+                                    {event.summary}
+                                </Typography>
+                                {event.description ? (
+                                    <>
+                                        <Divider
+                                            variant="fullWidth"
+                                            className={classes.divider}
+                                        />
+                                        <Typography
+                                            variant="body2"
+                                            dangerouslySetInnerHTML={{
+                                                __html: event.description,
+                                            }}
+                                        />
+                                    </>
+                                ) : null}
+                            </Paper>
+                        </TimelineItem2>
+                    ))
+                ) : (
+                    <TimelineItem2>{noEventsBanner}</TimelineItem2>
+                )}
+            </Timeline>
+        </Layout>
     );
 };
 

@@ -1,9 +1,11 @@
 import dynamic from "next/dynamic";
 
 import { Grid } from "@material-ui/core";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import ComputerIcon from "@material-ui/icons/Computer";
 import DescriptionIcon from "@material-ui/icons/Description";
+
+import Space from "components/general/space";
+import Layout from "components/general/layout";
 
 const ArchiveButton = dynamic(() =>
     import("components/archives/archiveButton")
@@ -11,19 +13,10 @@ const ArchiveButton = dynamic(() =>
 const SectionHeader = dynamic(() =>
     import("components/general/section-header")
 );
-const Space = dynamic(() => import("components/general/space"));
-
-const useStyles = makeStyles(() => ({
-    root: {
-        margin: "auto",
-        width: "90%",
-    },
-}));
 
 const Archives = () => {
-    const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <Layout width="90%">
             <Space />
             <SectionHeader text="Project Archives" width="70%" />
             <Space />
@@ -52,7 +45,7 @@ const Archives = () => {
                     />
                 </Grid>
             </Grid>
-        </div>
+        </Layout>
     );
 };
 

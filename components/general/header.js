@@ -1,6 +1,7 @@
 import React from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -14,9 +15,6 @@ import NavBurger from "../../navigation/navburger";
 import { cdn_url } from "../../utils/constants";
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
     menuButton: {
         marginRight: theme.spacing(1),
         display: "block",
@@ -46,6 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 const Header = ({ currentRoute }) => {
     const classes = useStyles();
+    const theme = useTheme();
     const [drawer, setDrawer] = React.useState(false);
 
     const toggleDrawer = open => event => {
@@ -59,10 +58,7 @@ const Header = ({ currentRoute }) => {
     };
 
     return (
-        <AppBar
-            position="fixed"
-            style={{ backgroundColor: "#622A55", zIndex: 2 }}
-        >
+        <AppBar position="fixed" color="primary" style={{ zIndex: 1 }}>
             <Toolbar>
                 <IconButton
                     aria-label="open drawer"
@@ -86,12 +82,14 @@ const Header = ({ currentRoute }) => {
                 </Drawer>
                 <div className={classes.title}>
                     <img
-                        src={`${cdn_url}/utilities/logo-cssec-white.png`}
+                        src={`${cdn_url}/utilities/mecha_chammie.png`}
                         height={50}
                         width={50}
                     />
                     <Typography variant="h6" className={classes.titleText}>
-                        Computer Studies Student Executive Council
+                        {!useMediaQuery(theme.breakpoints.down("md"))
+                            ? "Computer Studies Student Executive Council"
+                            : "CSSEC"}
                     </Typography>
                 </div>
 
