@@ -35,12 +35,6 @@ const Highlights = () => {
     const [currentImage, setCurrentImage] = React.useState(0);
     const [isViewerOpen, setIsViewerOpen] = React.useState(false);
 
-    const images = [
-        `${cdn_url}/highlights/cssec21-22-branding/cs-shirt-black.jpg`,
-        `${cdn_url}/highlights/cssec21-22-branding/cs-shirt-white.jpg`,
-        `${cdn_url}/highlights/cssec21-22-branding/cs-shirt-pastel.jpg`,
-    ];
-
     const openImageViewer = React.useCallback(index => {
         setCurrentImage(index);
         setIsViewerOpen(true);
@@ -118,12 +112,13 @@ const Highlights = () => {
 
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4} align="center">
+                    <SectionHeader text="Creation of the CS Branding" />
                     <img
                         src={`${cdn_url}/highlights/cssec21-22-branding/pubmat.jpg`}
                         width="90%"
                     />
                 </Grid>
-                <Grid item xs={12} md={8} align="center">
+                {/* <Grid item xs={12} md={8} align="center">
                     <SectionHeader text="CS Shirts" />
                     {images.map((src, index) => (
                         <img
@@ -144,6 +139,16 @@ const Highlights = () => {
                             onClose={closeImageViewer}
                         />
                     )}
+                </Grid> */}
+                <Grid item xs={12} md={8} align="center">
+                    <iframe
+                        src="https://www.youtube.com/embed/fU86XLrvWJw"
+                        title="W3Schools Free Online Web Tutorials"
+                        width="100%"
+                        height="500px"
+                        loading="lazy"
+                        allowFullScreen={true}
+                    />
                 </Grid>
             </Grid>
             <Space height={25} />

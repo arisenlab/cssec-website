@@ -56,6 +56,7 @@ const Banners = ({ images }) => {
                 <Slide {...properties} indicators easing="ease">
                     {fadeImages.map((image, i) => (
                         <div
+                            key={image}
                             style={{ backgroundImage: `url(${image})` }}
                             className={`each-fade ${classes.image}`}
                         />

@@ -45,6 +45,7 @@ const Archives = () => {
                     />
                 </Grid>
             </Grid>
+            <Space />
         </Layout>
     );
 };
