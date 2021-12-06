@@ -4,8 +4,8 @@ const Links = [
         href: "/",
     },
     {
-        page: "Highlights",
-        href: "/highlights",
+        page: "It Week",
+        href: "/it-week",
     },
     /* {
         page: "ACCSS",
