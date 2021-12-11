@@ -14,91 +14,87 @@ import NavBurger from "../../navigation/navburger";
 
 import { cdn_url } from "../../utils/constants";
 
-const useStyles = makeStyles(theme => ({
-    menuButton: {
-        marginRight: theme.spacing(1),
-        display: "block",
-        [theme.breakpoints.up("md")]: {
-            display: "none",
-        },
-        color: "#fff",
+const useStyles = makeStyles((theme) => ({
+  menuButton: {
+    marginRight: theme.spacing(1),
+    display: "block",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
     },
-    navLinks: {
-        [theme.breakpoints.down("md")]: {
-            display: "none",
-        },
-        [theme.breakpoints.up("md")]: {
-            display: "block",
-        },
+    color: "#fff",
+  },
+  navLinks: {
+    [theme.breakpoints.down("md")]: {
+      display: "none",
     },
-    title: {
-        flexGrow: 1,
-        display: "flex",
-        alignItems: "center",
-        padding: 5,
+    [theme.breakpoints.up("md")]: {
+      display: "block",
     },
-    titleText: {
-        paddingLeft: 10,
-    },
+  },
+  title: {
+    flexGrow: 1,
+    display: "flex",
+    alignItems: "center",
+    padding: 5,
+  },
+  titleText: {
+    paddingLeft: 10,
+  },
 }));
 
 const Header = ({ currentRoute }) => {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [drawer, setDrawer] = React.useState(false);
+  const classes = useStyles();
+  const theme = useTheme();
+  const [drawer, setDrawer] = React.useState(false);
 
-    const toggleDrawer = open => event => {
-        if (
-            event.type === "keydown" &&
-            (event.key === "Tab" || event.key === "Shift")
-        ) {
-            return;
-        }
-        setDrawer(open);
-    };
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setDrawer(open);
+  };
 
-    return (
-        <AppBar position="fixed" color="primary" style={{ zIndex: 1 }}>
-            <Toolbar>
-                <IconButton
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={toggleDrawer(true)}
-                    className={classes.menuButton}
-                >
-                    <MenuIcon />
-                </IconButton>
+  return (
+    <AppBar position="sticky" color="primary" style={{ zIndex: 1 }}>
+      <Toolbar>
+        <IconButton
+          aria-label="open drawer"
+          edge="start"
+          onClick={toggleDrawer(true)}
+          className={classes.menuButton}
+        >
+          <MenuIcon />
+        </IconButton>
 
-                <Drawer
-                    anchor={"left"}
-                    open={drawer}
-                    onClose={toggleDrawer(false)}
-                >
-                    <NavBurger
-                        onChosen={() => {
-                            setDrawer(false);
-                        }}
-                    />
-                </Drawer>
-                <div className={classes.title}>
-                    <img
-                        src={`${cdn_url}/utilities/mecha_chammie.png`}
-                        height={50}
-                        width={50}
-                    />
-                    <Typography variant="h6" className={classes.titleText}>
-                        {!useMediaQuery(theme.breakpoints.down("md"))
-                            ? "Computer Studies Student Executive Council"
-                            : "CSSEC"}
-                    </Typography>
-                </div>
+        <Drawer anchor={"left"} open={drawer} onClose={toggleDrawer(false)}>
+          <NavBurger
+            onChosen={() => {
+              setDrawer(false);
+            }}
+          />
+        </Drawer>
+        <div className={classes.title}>
+          <img
+            src={`${cdn_url}/utilities/mecha_chammie.png`}
+            height={50}
+            width={50}
+          />
+          <Typography variant="h6" className={classes.titleText}>
+            {!useMediaQuery(theme.breakpoints.down("md"))
+              ? "Computer Studies Student Executive Council"
+              : "CSSEC"}
+          </Typography>
+        </div>
 
-                <div className={classes.navLinks}>
-                    <Navbar currentRoute={currentRoute} />
-                </div>
-            </Toolbar>
-        </AppBar>
-    );
+        <div className={classes.navLinks}>
+          <Navbar currentRoute={currentRoute} />
+        </div>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Header;

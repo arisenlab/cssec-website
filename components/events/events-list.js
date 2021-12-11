@@ -1,112 +1,100 @@
-import React from "react";
+import React, { useRef } from "react";
+import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { format, differenceInSeconds, formatDistanceToNow } from "date-fns";
+import { Details } from "@material-ui/icons";
+
+const useStyles = makeStyles(() => ({
+  header: {
+    backgroundColor: "#C9A3E4",
+    padding: 20,
+    marginBottom: 10,
+  },
+  details: {
+    background: "rgba(196, 196, 196, 0.5)",
+    padding: 5,
+    marginTop: 5,
+    borderLeft: "5px solid #E5E5E5",
+    marginBottom: 10,
+  },
+}));
 
 const EventsList = ({ day_events }) => {
-    const dateToday = new Date();
+  const classes = useStyles();
+  const dateToday = new Date();
 
-    const [events, setEvents] = React.useState([]);
-    const [currentTime, setCurrentTime] = React.useState(new Date());
-    const [currentString, setCurrentString] = React.useState("");
+  const [events, setEvents] = React.useState([]);
 
-    React.useEffect(() => {
-        setEvents(day_events);
-    }, []);
+  React.useEffect(() => {
+    setEvents(day_events);
+  }, []);
 
-    React.useEffect(() => {
-        window.setInterval(
-            setCurrentTime(() => new Date()),
-            1000
-        );
-    }, []);
-
-    React.useEffect(() => {
-        if (events.length > 0) {
-            if (
-                differenceInSeconds(
-                    new Date(events[0].start.dateTime),
-                    new Date()
-                ) > 0
-            ) {
-                setCurrentString(
-                    `Event ${events[0].summary} comes in ${formatDistanceToNow(
-                        new Date(events[0].start.dateTime)
-                    )}`
-                );
-            } else {
-                setCurrentString(`Event ${events[0].summary} is happening now`);
-            }
-        } else {
-            setCurrentString("There are no upcoming events");
-        }
-    }, [events, currentTime]);
-
+  const Detail = ({ children }) => {
     return (
-        <Paper elevation={3}>
-            <div style={{ padding: 15 }}>
-                <Paper
-                    style={{
-                        backgroundColor: "#C9B1B1",
-                        padding: 5,
-                    }}
-                >
-                    <Typography variant="h4">
-                        <i>{format(dateToday, "EEEE")}</i>
-                    </Typography>
-                    <Divider
-                        variant="fullWidth"
-                        style={{
-                            height: 5,
-                            backgroundColor: "#622a55",
-                        }}
-                    />
-                </Paper>
-                <div
-                    style={{
-                        padding: 15,
-                        overflowY: "scroll",
-                        height: "310px",
-                    }}
-                >
-                    <Paper
-                        style={{
-                            padding: 10,
-                            marginTop: 10,
-                            backgroundColor: "#BC8CB3",
-                        }}
-                    >
-                        <Typography variant="h6">
-                            <strong>{currentString}</strong>
-                        </Typography>
-                    </Paper>
-                    {events.map(({ id, summary, start, end, description }) => (
-                        <Paper
-                            style={{
-                                padding: 10,
-                                marginTop: 10,
-                                backgroundColor: "#BC8CB3",
-                            }}
-                            key={id}
-                        >
-                            <Typography variant="h6">{summary}</Typography>
-                            <Typography variant="subtitle2">
-                                {`${format(
-                                    new Date(start.dateTime),
-                                    "p"
-                                )} - ${format(new Date(end.dateTime), "p")}`}
-                            </Typography>
-                            <Typography variant="body1">
-                                {description}
-                            </Typography>
-                        </Paper>
-                    ))}
-                </div>
-            </div>
-        </Paper>
+      <Box className={classes.details}>
+        <Typography variant="h6">
+          <strong>{children}</strong>
+        </Typography>
+      </Box>
     );
+  };
+
+  return (
+    <Box>
+      <Paper className={classes.header}>
+        <Typography variant="h4">{format(dateToday, "EEEE")}</Typography>
+        <Divider
+          variant="fullWidth"
+          style={{
+            height: 5,
+            backgroundColor: "#5D2252",
+          }}
+        />
+      </Paper>
+
+      {events ? (
+        <Detail className={classes.details}>
+          <Typography variant="h6">
+            <strong>No Events for today</strong>
+          </Typography>
+        </Detail>
+      ) : (
+        events.map(({ id, summary, start, end, description }) => (
+          <Detail key={id}>
+            <Typography variant="h6" style={{ fontWeight: "bold" }}>
+              {summary}
+            </Typography>
+            <Typography
+              variant="body1"
+              color="primary"
+              style={{ fontWeight: "bold" }}
+            >
+              {`${format(new Date(start.dateTime), "p")} - ${format(
+                new Date(end.dateTime),
+                "p"
+              )}`}
+            </Typography>
+          </Detail>
+        ))
+      )}
+
+      <Details>
+        <Typography variant="h6" style={{ fontWeight: "bold" }}>
+          E-Sports Championship: Mobile Legends
+        </Typography>
+        <Typography variant="body1" color="primary">
+          3:00pm - 4:00pm
+        </Typography>
+        <Typography variant="body1" color="primary">
+          Via Zoom
+        </Typography>
+      </Details>
+    </Box>
+  );
 };
 
 export default EventsList;
