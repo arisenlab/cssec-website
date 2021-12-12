@@ -6,6 +6,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { isSameDay } from "date-fns";
+
 import Layout from "components/general/layout";
 import ITWeekLayout from "components/it-week/ITWeekLayout";
 import Space from "components/general/space";
@@ -13,8 +15,8 @@ import Space from "components/general/space";
 const Redirect = dynamic(() => import("../../components/it-week/Redirect"));
 const EventsList = dynamic(() => import("../../components/events/events-list"));
 
-import { cdn_url } from "utils/constants";
 import ITWeekActs from "../../data/it-week";
+import google_calendar from "utils/google";
 
 const useStyles = makeStyles(() => ({
   itWeekDescription: {
@@ -55,26 +57,23 @@ const Highlights = ({ day_events }) => {
         <Space />
 
         <Grid container spacing={2}>
-          <Grid container item md={8}>
-            <Grid item xs={12}>
-              <img src="/it-week/itweek21-banner.png" width="100%" />
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={classes.itWeekDescription}>
-                <Typography
-                  variant="body1"
-                  className={classes.description}
-                  paragraph
-                >
-                  Several face-to-face events were difficult to hold this school
-                  year due to the ongoing pandemic. This year's IT Week will be
-                  hosted remotely, and the Computer Studies Students Executive
-                  Council (CSSEC) will be in charge of organizing IT Week 2021
-                  with the theme “Achieving Transcendence, Empowering Tech
-                  Students of Today” on December 13-18, 2021.
-                </Typography>
-              </Paper>
-            </Grid>
+          <Grid item xs={12} md={8}>
+            <img src="/it-week/itweek21-banner.png" width="100%" />
+
+            <Paper className={classes.itWeekDescription}>
+              <Typography
+                variant="body1"
+                className={classes.description}
+                paragraph
+              >
+                Several face-to-face events were difficult to hold this school
+                year due to the ongoing pandemic. This year's IT Week will be
+                hosted remotely, and the Computer Studies Students Executive
+                Council (CSSEC) will be in charge of organizing IT Week 2021
+                with the theme “Achieving Transcendence, Empowering Tech
+                Students of Today” on December 13-18, 2021.
+              </Typography>
+            </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
             <EventsList day_events={day_events} />
