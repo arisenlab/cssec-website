@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -62,41 +63,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PodcastItem = () => {
+const Podcast = ({ podcasts }) => {
   const classes = useStyles();
-  return (
-    <Box className={classes.item_container}>
-      <img
-        src="/it-week/podcast_1.png"
-        alt="Podcast Picture"
-        className={classes.item_img}
-      />
-      <Box className={classes.item_paper}>
-        <Typography variant="h6" color="primary" gutterBottom>
-          1.) Why Data Science?
-        </Typography>
-        <Typography variant="body2" paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
-        </Typography>
-        <Box className={classes.links}>
-          <IconButton aria-label="delete">
-            <FacebookIcon color="primary" />
-          </IconButton>
-          <IconButton aria-label="delete">
-            <YouTubeIcon color="primary" />
-          </IconButton>
-          <IconButton aria-label="delete">
-            <Icon icon="mdi:spotify" style={{ color: "#622A55" }} />
-          </IconButton>
+  const router = useRouter();
+
+  const PodcastItem = ({ podcast, index }) => {
+    return (
+      <Box className={classes.item_container}>
+        <img
+          src={podcast.acf.thumbnail.url}
+          alt={`${podcast.acf.title} Thumbnail`}
+          className={classes.item_img}
+        />
+        <Box className={classes.item_paper}>
+          <Typography variant="h6" color="primary" gutterBottom>
+            {`${index + 1}.) ${podcast.acf.title}`}
+          </Typography>
+          <Typography variant="body2" paragraph>
+            {podcast.acf.description}
+          </Typography>
+          <Box className={classes.links}>
+            <IconButton
+              aria-label={`${podcast.acf.title}-facebook-link`}
+              onClick={() => router.push(podcast.acf.facebook_link)}
+            >
+              <FacebookIcon color="primary" />
+            </IconButton>
+            <IconButton
+              aria-label={`${podcast.acf.title}-youtube-link`}
+              onClick={() => router.push(podcast.acf.youtube_link)}
+            >
+              <YouTubeIcon color="primary" />
+            </IconButton>
+            <IconButton
+              aria-label={`${podcast.acf.title}-spotify-link`}
+              onClick={() => router.push(podcast.acf.spotify_link)}
+            >
+              <Icon icon="mdi:spotify" style={{ color: "#622A55" }} />
+            </IconButton>
+          </Box>
         </Box>
       </Box>
-    </Box>
-  );
-};
+    );
+  };
 
-const Podcast = () => {
-  const classes = useStyles();
   return (
     <Box className={classes.root}>
       <Box className={classes.title}>
@@ -106,15 +116,11 @@ const Podcast = () => {
       </Box>
       <Box className={classes.container}>
         <Grid container direction="column">
-          <Grid item>
-            <PodcastItem />
-          </Grid>
-          <Grid item>
-            <PodcastItem />
-          </Grid>
-          <Grid item>
-            <PodcastItem />
-          </Grid>
+          {podcasts.map((podcast, index) => (
+            <Grid item>
+              <PodcastItem podcast={podcast} index={index} />
+            </Grid>
+          ))}
         </Grid>
       </Box>
     </Box>

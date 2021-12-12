@@ -78,7 +78,6 @@ const Highlights = ({ day_events }) => {
           </Grid>
           <Grid item xs={12} md={4}>
             <EventsList day_events={day_events} />
-            <img src={`${cdn_url}/ads/batucs-1.png`} width="100%" />
           </Grid>
         </Grid>
 

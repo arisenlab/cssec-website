@@ -13,7 +13,7 @@ const ItWeekActs = [
   },
   {
     title: "E-Sports",
-    href: "#",
+    href: "https://twitter.com/ADDU_CS/status/1461597743831347201",
     icon: "/icons/e-sports.png",
     bgImage: "/it-week/main-bg-classic.jpg",
   },

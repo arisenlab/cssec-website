@@ -14,7 +14,9 @@ import Podcast from "components/it-week/Podcast";
 import Games from "components/it-week/Games";
 import ButtonBack from "components/general/ButtonBack";
 
-const Activities = () => {
+import WP from "utils/wordpress";
+
+const Activities = ({ podcasts }) => {
   const router = useRouter();
   return (
     <ITWeekLayout>
@@ -140,7 +142,7 @@ const Activities = () => {
             </Grid>
           </Grid>
           <Grid item xs={12} md={6} align="center">
-            <Podcast />
+            <Podcast podcasts={podcasts} />
           </Grid>
         </Grid>
 
@@ -206,5 +208,15 @@ const Activities = () => {
     </ITWeekLayout>
   );
 };
+
+export async function getStaticProps() {
+  try {
+    let podcasts = await WP.podcasts();
+
+    return { props: { podcasts }, revalidate: 10 };
+  } catch (err) {
+    return { props: { podcasts: [] }, revalidate: 10 };
+  }
+}
 
 export default Activities;

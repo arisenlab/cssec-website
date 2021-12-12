@@ -46,7 +46,7 @@ const EventsList = ({ day_events }) => {
   return (
     <Box>
       <Paper className={classes.header}>
-        <Typography variant="h4">{format(dateToday, "EEEE")}</Typography>
+        <Typography variant="h4">Now Happening</Typography>
         <Divider
           variant="fullWidth"
           style={{
