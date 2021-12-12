@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 10,
     paddingRight: 10,
     fontWeight: "bold",
+    [theme.breakpoints.down("md")]: {
+      top: 5,
+      bottom: 5,
+    },
   },
   contentContainer: {
     display: "flex",

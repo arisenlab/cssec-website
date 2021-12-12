@@ -122,7 +122,7 @@ const Highlights = ({ day_events }) => {
             <Grid container spacing={2} style={{ marginTop: 10 }}>
               {ITWeekActs.map((act) => {
                 return (
-                  <Grid item xs={6} md={4} key={act.title}>
+                  <Grid item xs={12} md={4} key={act.title}>
                     <Redirect act={act} />
                   </Grid>
                 );

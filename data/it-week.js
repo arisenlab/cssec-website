@@ -1,12 +1,12 @@
 const ItWeekActs = [
   {
-    title: "Schedule of Activities",
+    title: "Schedules",
     href: "/it-week/events",
     icon: "/icons/events.png",
     bgImage: "/it-week/main-bg-classic.jpg",
   },
   {
-    title: "IT Week Activities",
+    title: "Activities",
     href: "/it-week/activities",
     icon: "/icons/activities.png",
     bgImage: "/it-week/main-bg-classic.jpg",
@@ -18,13 +18,13 @@ const ItWeekActs = [
     bgImage: "/it-week/main-bg-classic.jpg",
   },
   {
-    title: "Incognitalk Podcast",
+    title: "Incognitalk",
     href: "https://open.spotify.com/show/7fXX2z0voNGd727MdtkKDc?si=eee2d69041d84f65",
     icon: "/icons/podcasts.png",
     bgImage: "/it-week/main-bg-podcast.jpg",
   },
   {
-    title: "Discord Server",
+    title: "Discord",
     href: "https://tinyurl.com/ITWeek2021HackOverflow",
     icon: "/icons/discord.png",
     bgImage: "/it-week/main-bg-discord.jpg",
