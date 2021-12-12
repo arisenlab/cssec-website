@@ -17,7 +17,6 @@ import ButtonBack from "components/general/ButtonBack";
 import WP from "utils/wordpress";
 
 const Activities = ({ podcasts }) => {
-  console.log(podcasts[0]);
   const router = useRouter();
   return (
     <ITWeekLayout>

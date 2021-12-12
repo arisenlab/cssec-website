@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   item_img: {
     borderRadius: "10px 0 0 10px",
-    width: "40%",
+    width: "35%",
     [theme.breakpoints.down("md")]: {
       width: "45%",
     },
@@ -79,11 +79,14 @@ const Podcast = ({ podcasts }) => {
           className={classes.item_img}
         />
         <Box className={classes.item_paper}>
-          <Typography variant="h6" color="primary" gutterBottom>
+          <Typography variant="h6" color="primary">
             {`${index + 1}.) ${podcast.acf.title}`}
           </Typography>
           <Typography variant="body2" paragraph>
             {podcast.acf.description}
+          </Typography>
+          <Typography variant="body1" color="primary" gutterBottom>
+            {`Premiere at ${podcast.acf.date_time}`}
           </Typography>
           <Box className={classes.links}>
             <IconButton
