@@ -17,6 +17,7 @@ import ButtonBack from "components/general/ButtonBack";
 import WP from "utils/wordpress";
 
 const Activities = ({ podcasts }) => {
+  console.log(podcasts[0]);
   const router = useRouter();
   return (
     <ITWeekLayout>
@@ -211,7 +212,7 @@ const Activities = ({ podcasts }) => {
 
 export async function getStaticProps() {
   try {
-    let podcasts = await WP.podcasts();
+    let podcasts = await WP.podcasts().order("asc").orderby("date");
 
     return { props: { podcasts }, revalidate: 10 };
   } catch (err) {

@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#C9A3E4",
     width: "80%",
     padding: 15,
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   title: {
     textAlign: "left",
@@ -43,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
   },
   item_img: {
     borderRadius: "10px 0 0 10px",
-    width: "30%",
+    width: "40%",
     [theme.breakpoints.down("md")]: {
-      width: "40%",
+      width: "45%",
     },
   },
   item_paper: {
@@ -117,7 +120,7 @@ const Podcast = ({ podcasts }) => {
       <Box className={classes.container}>
         <Grid container direction="column">
           {podcasts.map((podcast, index) => (
-            <Grid item>
+            <Grid item key={podcast.id}>
               <PodcastItem podcast={podcast} index={index} />
             </Grid>
           ))}
