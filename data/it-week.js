@@ -25,7 +25,7 @@ const ItWeekActs = [
   },
   {
     title: "Discord",
-    href: "https://tinyurl.com/ITWeek2021HackOverflow",
+    href: "https://tinyurl.com/ITWeek2021DiscordServer",
     icon: "/icons/discord.png",
     bgImage: "/it-week/main-bg-discord.jpg",
   },

@@ -40,6 +40,7 @@ const Highlights = ({ day_events }) => {
   const classes = useStyles();
   const [currentImage, setCurrentImage] = React.useState(0);
   const [isViewerOpen, setIsViewerOpen] = React.useState(false);
+  const [slideshow, setSlideshow] = React.useState(true);
 
   const openImageViewer = React.useCallback((index) => {
     setCurrentImage(index);
@@ -50,6 +51,15 @@ const Highlights = ({ day_events }) => {
     setCurrentImage(0);
     setIsViewerOpen(false);
   };
+  /* console.log(slideshow); */
+
+  React.useEffect(() => {
+    const toggle = setInterval(() => setSlideshow(!slideshow), 5000);
+
+    return () => {
+      clearInterval(toggle);
+    };
+  });
 
   return (
     <ITWeekLayout>
@@ -84,7 +94,10 @@ const Highlights = ({ day_events }) => {
 
         <Grid container spacing={2}>
           <Grid item xs={12} md={4} align="center">
-            <img src="/ads/pc-builders-ad.png" width="90%" />
+            <img
+              src={`/ads/${slideshow ? "pc-builders-ad" : "booploops-ad"}.png`}
+              width="90%"
+            />
           </Grid>
           {/* <Grid item xs={12} md={8} align="center">
                     <SectionHeader text="CS Shirts" />
