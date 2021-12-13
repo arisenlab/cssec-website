@@ -82,7 +82,7 @@ const Activities = ({ podcasts }) => {
             </Grid>
           </Grid>
           <Grid item xs={12} md={4} align="center">
-            <img src="/ads/pc-builders-ad-2.png" width="90%" />
+            <img src="/ads/pc-builders-ad-poster.png" width="90%" />
           </Grid>
           <Grid item xs={12}>
             <Games />
