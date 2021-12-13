@@ -19,7 +19,6 @@ import ButtonBack from "components/general/ButtonBack";
 import days from "data/days_data";
 
 import google_calendar from "utils/google";
-import { cdn_url } from "utils/constants";
 
 import { isSameDay } from "date-fns";
 
@@ -101,13 +100,6 @@ const Events = ({
                 <Paper className={classes.contentEvent}>
                   <Grid container spacing={2} direction="column">
                     <Grid item xs={12}>
-                      {/* <EventCard
-                        summary={"Blah3dasddawd"}
-                        timeStart={new Date()}
-                        timeEnd={new Date()}
-                        location={"Matina"}
-                        description={"Description"}
-                      /> */}
                       {eventList && eventList.length !== 0 ? (
                         eventList.map((event) => (
                           <EventCard
