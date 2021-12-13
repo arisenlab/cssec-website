@@ -59,9 +59,11 @@ const EventCard = ({ summary, timeStart, timeEnd, location, description }) => {
         </Grid>
         <Grid container item>
           <Grid item xs={12}>
-            <Typography variant="body1" align="justify">
-              {description}
-            </Typography>
+            <Typography
+              variant="body1"
+              align="justify"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
           </Grid>
         </Grid>
       </Grid>

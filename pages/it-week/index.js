@@ -54,7 +54,7 @@ const Highlights = ({ day_events }) => {
   /* console.log(slideshow); */
 
   React.useEffect(() => {
-    const toggle = setInterval(() => setSlideshow(!slideshow), 5000);
+    const toggle = setInterval(() => setSlideshow(!slideshow), 8000);
 
     return () => {
       clearInterval(toggle);
@@ -95,7 +95,7 @@ const Highlights = ({ day_events }) => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={4} align="center">
             <img
-              src={`/ads/${slideshow ? "pc-builders-ad" : "booploops-ad"}.png`}
+              src={`/ads/${slideshow ? "pc-builders-ad-poster" : "ob-ad"}.png`}
               width="90%"
             />
           </Grid>
