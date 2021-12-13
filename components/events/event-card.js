@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
+import Box from "@material-ui/core/Box";
 
 import parse from "html-react-parser";
 import { format, differenceInSeconds } from "date-fns";
@@ -30,7 +31,7 @@ const EventCard = ({ summary, timeStart, timeEnd, location, description }) => {
   console.log(typeof description);
 
   return (
-    <Paper style={{ padding: 15, marginBottom: 10 }}>
+    <Paper style={{ padding: 15, marginBottom: 10, width: "100%" }}>
       <Grid container direction="column" spacing={1}>
         <Grid item>
           <Typography variant="h5" align="left">
@@ -74,7 +75,10 @@ const EventCard = ({ summary, timeStart, timeEnd, location, description }) => {
                         return (
                           <a
                             href={domNode?.attribs.href}
-                            style={{ overflowWrap: "break-word" }}
+                            style={{
+                              overflowWrap: "break-word",
+                              wordWrap: "break-word",
+                            }}
                           >
                             {domNode?.attribs.href}
                           </a>

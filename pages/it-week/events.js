@@ -90,7 +90,7 @@ const Events = ({
                 </Grid>
               ))}
             </Grid>
-            <Grid container item sm={6} spacing={1} direction="column">
+            <Grid container item xs={12} sm={6} spacing={1} direction="column">
               <Grid item align="center">
                 <Paper className={classes.headerEvent}>
                   <Typography variant="h6">{dayDate}</Typography>
