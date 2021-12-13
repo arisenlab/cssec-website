@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 
+import parse from "html-react-parser";
 import { format, differenceInSeconds } from "date-fns";
 
 const EventCard = ({ summary, timeStart, timeEnd, location, description }) => {
@@ -25,6 +26,8 @@ const EventCard = ({ summary, timeStart, timeEnd, location, description }) => {
       setHappening(false);
     }
   }, [currentTime]);
+
+  console.log(typeof description);
 
   return (
     <Paper style={{ padding: 15, marginBottom: 10 }}>
@@ -62,8 +65,25 @@ const EventCard = ({ summary, timeStart, timeEnd, location, description }) => {
             <Typography
               variant="body1"
               align="justify"
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
+              /* dangerouslySetInnerHTML={{ __html: description }} */
+            >
+              {description
+                ? parse(String(description), {
+                    replace: (domNode) => {
+                      if (domNode?.tagName == "a") {
+                        return (
+                          <a
+                            href={domNode?.attribs.href}
+                            style={{ overflowWrap: "break-word" }}
+                          >
+                            {domNode?.attribs.href}
+                          </a>
+                        );
+                      }
+                    },
+                  })
+                : `IT Week 2021's ${summary}`}
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
