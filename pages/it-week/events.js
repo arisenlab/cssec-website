@@ -22,7 +22,7 @@ import google_calendar from "utils/google";
 
 import { isSameDay } from "date-fns";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     padding: 10,
   },
@@ -33,6 +33,10 @@ const useStyles = makeStyles(() => ({
   contentEvent: {
     backgroundColor: "#C9A3E4",
     padding: 20,
+    width: "100%",
+    [theme.breakpoints.down("md")]: {
+      width: "355px",
+    },
   },
 }));
 
